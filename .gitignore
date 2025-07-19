@@ -1,0 +1,13 @@
+#Git ignore file
+#don't want to include:
+#   __pycache__ directory /
+#   env directory /
+#   instance directory /
+
+__pycache__/
+env/
+.env
+logs/
+
+#good practice to ignore .DS_Store (created by mac)
+.DS_Store
