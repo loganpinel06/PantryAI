@@ -13,6 +13,7 @@ def create_app():
     app = Flask(__name__)
 
     #configure the apps database
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pantry.db'  # SQLite database file
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking for performance inhancement
 
     #initialize the db
