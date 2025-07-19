@@ -3,10 +3,10 @@
 #and runs the app through a main guard
 
 #import the createApp method from the app package
-from app import createApp
+from app import create_app
 
 #create the app calling imported subroutine
-app = createApp()
+app = create_app()
 
 #run the app using a main guard
 if __name__ == "__main__":
