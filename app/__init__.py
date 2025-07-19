@@ -18,6 +18,10 @@ def create_app():
     #initialize the db
     db.init_app(app)
 
+    #register the routes blueprint from routes.py
+    from .routes import view
+    app.register_blueprint(view)
+
     #create the database using a context manager
     with app.app_context():
         db.create_all()
