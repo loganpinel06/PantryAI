@@ -1,19 +1,43 @@
 #
 
 #imports
-from flask import Blueprint, render_template, url_for
+from flask import Blueprint, render_template, redirect, url_for, jsonify
 #import the Pantry model
 from .models import Pantry
 #import the db object from __init__.py to connect to the database
 from . import db
+#import the Flask-WTF forms from forms.py
+from .forms import PantryForm
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
 
 #create a test route
-@view.route('/', methods=['GET'])
+@view.route('/', methods=['POST', 'GET'])
 def index():
-    #query the database for all pantry items
-    pantry_items = Pantry.query.all()
-    #render the index template with the pantry items
-    return render_template('index.html', pantry_items=pantry_items)
+    #create the PantryForm instance
+    pantry_form = PantryForm()
+    #check if the form is submitted (POST METHOD)
+    if pantry_form.validate_on_submit():
+        #get the data from the form
+        ingredient = pantry_form.ingredient.data
+        #create a new Pantry object
+        new_pantry_object = Pantry(ingredient=ingredient)
+        #try, except block to add the Pantry object to the database
+        try: 
+            #connect to the db and add the pantry object
+            db.session.add(new_pantry_object)
+            #commit the transaction to the db
+            db.session.commit()
+            #return a json response with the new pantry item
+            return redirect(url_for('view.index'))
+        #ERROR
+        except Exception as e:
+            #return the error message
+            return 'Error: {}'.format(e)
+    #if the HTTP method is GET, retrieve all pantry items
+    else:
+        #query the Pantry model to get all pantry items
+        pantry_items = Pantry.query.all()
+        #render the index.html template with the pantry items and form
+        return render_template('index.html', pantry_items=pantry_items, form=pantry_form)

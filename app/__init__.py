@@ -16,6 +16,9 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pantry.db'  # SQLite database file
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking for performance inhancement
 
+    #configure the app's secret key for session management
+    app.config['SECRET_KEY'] = 'secret_key'
+
     #initialize the db
     db.init_app(app)
 

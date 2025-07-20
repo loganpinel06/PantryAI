@@ -1,16 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PantryAI</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
     <h1>PantryAI</h1>
-    <ul>
-        {% for item in pantry_items %}
-            <li>{{ item.ingredient }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+</header>
+
+<div class="tabledata">
+    <table>
+        <thead>
+            <th>Ingredient</th>
+        </thead>
+        <tbody>
+            {% for item in pantry_items %}
+                <tr>
+                    <td>{{ item.ingredient }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="pantry_form">
+    <form action="{{url_for('view.index')}}" method="POST">
+        <!-- CSRF Token for security and other hidden elements -->
+        {{ form.hidden_tag() }}
+        <!-- Ingredient Input -->
+        {{ form.ingredient.label }} 
+        {{ form.ingredient() }}
+        <!-- Submit Button -->
+        {{ form.submit() }}
+    </form>
+</div>
+    
+
+{% endblock %}
