@@ -10,4 +10,4 @@ class PantryForm(FlaskForm):
     #ingredient field with a data required validator
     ingredient = StringField('Ingredient: ', id='ingredient-input', validators=[DataRequired()])
     #submit button
-    submit = SubmitField('Add Ingredient', id='submit-ingredient')
+    submit = SubmitField('Add Ingredient')

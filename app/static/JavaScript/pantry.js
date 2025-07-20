@@ -5,10 +5,8 @@ const fetchPantryItems = async (event) => {
     //get the table body element from the DOM ,the form element, and the input field from the form
     const tableBody = document.getElementById('pantry-table-body');
     const form = document.getElementById('pantry-form');
-    const ingredientInput = document.getElementById('ingredient-input');
     //create a new FormData object to send the ingredient input
     const formData = new FormData(form);
-    formData.append('ingredient', ingredientInput.value);
     try {
         //fetch the pantry items from the server
         const response = await fetch('/api/pantry/add-ingredient', {
@@ -34,7 +32,7 @@ const fetchPantryItems = async (event) => {
     }
 };
 
-//get the submit button from the pantry form on the DOM
-const submitButton = document.getElementById('submit-ingredient');
+//get the form from the DOM so we can submit it
+const form = document.getElementById('pantry-form');
 //add an event listener to the submit button to call the fetchPantryItems function when clicked
-submitButton.addEventListener('click', fetchPantryItems);
+form.addEventListener('submit', fetchPantryItems);

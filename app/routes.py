@@ -48,3 +48,8 @@ def add_ingredient():
         except Exception as e:
             #return the error message
             return 'Error: {}'.format(e)
+    #else return a json response with the form errors
+    else:
+        return jsonify({
+            'errors': pantry_form.errors
+        })
