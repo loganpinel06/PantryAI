@@ -14,11 +14,15 @@
     <table>
         <thead>
             <th>Ingredient</th>
+            <th>Actions</th>
         </thead>
         <tbody id="pantry-table-body">
             {% for item in pantry_items %}
-                <tr>
+                <tr data-id="{{ item.id }}">
                     <td>{{ item.ingredient }}</td>
+                    <td>
+                        <button type="button" class="delete-button" data-id="{{ item.id }}">Delete</button>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
