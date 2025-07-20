@@ -11,10 +11,20 @@ from .forms import PantryForm
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
-
-#create a test route
-@view.route('/', methods=['POST', 'GET'])
+    
+#create the main route to view all pantry items
+@view.route('/', methods=['GET'])
 def index():
+    #creat the PantryForm instance
+    pantry_form = PantryForm()
+    #query the Pantry model to get all pantry items
+    pantry_items = Pantry.query.all()
+    #render the pantry.html template with the pantry items
+    return render_template('index.html', pantry_items=pantry_items, form=pantry_form)
+
+#create an api route to add (POST) a new pantry item
+@view.route('/api/pantry/add-ingredient', methods=['POST'])
+def add_ingredient():
     #create the PantryForm instance
     pantry_form = PantryForm()
     #check if the form is submitted (POST METHOD)
@@ -30,14 +40,11 @@ def index():
             #commit the transaction to the db
             db.session.commit()
             #return a json response with the new pantry item
-            return redirect(url_for('view.index'))
+            return jsonify({
+                'id': new_pantry_object.id,
+                'ingredient': new_pantry_object.ingredient
+            })
         #ERROR
         except Exception as e:
             #return the error message
             return 'Error: {}'.format(e)
-    #if the HTTP method is GET, retrieve all pantry items
-    else:
-        #query the Pantry model to get all pantry items
-        pantry_items = Pantry.query.all()
-        #render the index.html template with the pantry items and form
-        return render_template('index.html', pantry_items=pantry_items, form=pantry_form)

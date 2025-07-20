@@ -8,6 +8,6 @@ from wtforms.validators import DataRequired
 #create a form class for adding pantry items
 class PantryForm(FlaskForm):
     #ingredient field with a data required validator
-    ingredient = StringField('Ingredient: ', validators=[DataRequired()])
+    ingredient = StringField('Ingredient: ', id='ingredient-input', validators=[DataRequired()])
     #submit button
-    submit = SubmitField('Add Ingredient')
+    submit = SubmitField('Add Ingredient', id='submit-ingredient')
