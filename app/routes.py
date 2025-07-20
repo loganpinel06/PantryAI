@@ -47,8 +47,12 @@ def add_ingredient():
             })
         #ERROR
         except Exception as e:
+            #rollback the Pantry object from the db session in case of an error
+            db.session.rollback()
             #return the error message
-            return 'Error: {}'.format(e)
+            return jsonify({
+                'error': 'Error adding pantry item: {}'.format(e)
+            }), 500 # HTTP status code 500 for server error
     #else return a json response with the form errors
     else:
         return jsonify({
