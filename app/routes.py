@@ -20,7 +20,7 @@ def index():
     #query the Pantry model to get all pantry items
     pantry_items = Pantry.query.all()
     #render the pantry.html template with the pantry items
-    return render_template('index.html', pantry_items=pantry_items, form=pantry_form)
+    return render_template('pantry.html', pantry_items=pantry_items, form=pantry_form)
 
 #create an api route to add (POST) a new pantry item
 @view.route('/api/pantry/add-ingredient', methods=['POST'])

@@ -25,6 +25,8 @@ const fetchPantryItems = async (event) => {
         newRow.innerHTML = `<td>${pantryData.ingredient}</td>`;
         //add the new pantry item to the table body
         tableBody.appendChild(newRow);
+        //reset the value of the input field
+        form.reset();
             
     } catch (error) {
         //log the error to the console
