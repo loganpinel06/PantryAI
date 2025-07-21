@@ -1,0 +1,48 @@
+//This project uses SCSS (CSS Preprocessor) for styling to allow for variables, nesting, and other features
+//The app primarily uses flexbox for a responsive design and uses some grid for specific layouts
+//Additionally, this stylesheet aims to focus on the basics of CSS like box-model to create a simple but effective design
+
+//variables
+$background-color: #252321;
+$text-color: #f0f0f0;
+
+//BASE STYLES FOR EVERY PAGE
+//body styles
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background-color: $background-color;
+    color: $text-color;
+
+    //box model styles
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+//header styles
+header {
+    //flexbox styles
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        //font styles
+        font-size: 36px;
+        font-weight: 800;
+        text-align: center;
+}
+
+//pantry.html .tabledata styles
+.tabledata {
+    //flexbox styles
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    //box model styles
+    width: 100%;
+}
