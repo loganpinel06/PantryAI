@@ -4,7 +4,7 @@
 
 //variables
 $background-color: #252321;
-$text-color: #f0f0f0;
+$text-color: wheat;
 
 //BASE STYLES FOR EVERY PAGE
 //body styles
@@ -44,5 +44,65 @@ header {
     justify-content: center;
 
     //box model styles
-    width: 100%;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    //target the th
+    th {
+        padding: 10px;
+    }
+
+    td {
+        padding-left: 10px;
+    }
+
+    //target the delete button
+    .delete-button {
+        //box model styles
+        width: 100%;
+        border: 2px solid white;
+        border-radius: 5px;
+        background-color: #F08080;
+    }
+}
+
+//pantry.html .pantry_form styles
+.pantry_form {
+    //flexbox styles
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    //box model styles
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 20px;
+
+    //target the form rows
+    .form-row {
+        //flexbox styles
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        //box model styles
+        margin: 10px;
+    }
+
+    //target the submit button
+    #submit-button {
+        //box model styles
+        width: 100%;
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 5px;
+        background-color: #F08080;
+    }
 }

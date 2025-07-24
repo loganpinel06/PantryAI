@@ -2,7 +2,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
   background-color: #252321;
-  color: #f0f0f0;
+  color: wheat;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -24,5 +24,48 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.tabledata th {
+  padding: 10px;
+}
+.tabledata td {
+  padding-left: 10px;
+}
+.tabledata .delete-button {
   width: 100%;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #F08080;
+}
+
+.pantry_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 20px;
+}
+.pantry_form .form-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 10px;
+}
+.pantry_form #submit-button {
+  width: 100%;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: #F08080;
 }/*# sourceMappingURL=styles.css.map */

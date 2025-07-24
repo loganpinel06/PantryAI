@@ -21,7 +21,7 @@
                 <tr data-id="{{ item.id }}">
                     <td>{{ item.ingredient }}</td>
                     <td>
-                        <button type="button" class="delete-button" data-id="{{ item.id }}">Delete</button>
+                        <button type="button" class="delete-button" data-id="{{ item.id }}">&times;</button>
                     </td>
                 </tr>
             {% endfor %}
@@ -33,11 +33,16 @@
     <form id="pantry-form" method="POST">
         <!-- CSRF Token for security and other hidden elements -->
         {{ form.hidden_tag() }}
-        <!-- Ingredient Input -->
-        {{ form.ingredient.label }} 
-        {{ form.ingredient() }}
-        <!-- Submit Button -->
-        {{ form.submit() }}
+        <!-- Nest the form fields in divs to give the form rows -->
+        <div class="form-row">
+            <!-- Ingredient Input -->
+            {{ form.ingredient.label }} 
+            {{ form.ingredient() }}
+        </div>
+        <div class="form-row">
+            <!-- Submit Button -->
+            {{ form.submit() }}
+        </div>
     </form>
 </div>
     
