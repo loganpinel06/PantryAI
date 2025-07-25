@@ -3,9 +3,13 @@
 #IMPORTS
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 #initialize the database
 db = SQLAlchemy()
+
+#initialize the login manager for user authentication
+login_manager = LoginManager()
 
 #create the Flask application instance
 def create_app():
@@ -22,9 +26,18 @@ def create_app():
     #initialize the db
     db.init_app(app)
 
+    #initialize the login manager
+    login_manager.init_app(app)
+    #set the login view for the login manager
+    login_manager.login_view = 'auth.login'
+
     #register the routes blueprint from routes.py
     from .routes import view
     app.register_blueprint(view)
+
+    #register the auth blueprint
+    from .auth import view_auth
+    app.register_blueprint(view_auth)
 
     #create the database using a context manager
     with app.app_context():

@@ -1,6 +1,8 @@
 #imports
 from . import db
+#import flask_login for user authentication
 from flask_login import UserMixin
+#import wekzeug.security for password hashing
 from werkzeug.security import generate_password_hash, check_password_hash
 
 #create the User model to store user information
