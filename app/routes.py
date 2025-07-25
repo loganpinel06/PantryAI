@@ -2,6 +2,8 @@
 
 #imports
 from flask import Blueprint, render_template, redirect, url_for, jsonify
+#import Flask-Login for user authentication
+from flask_login import login_required
 #import the Pantry model
 from .models import Pantry
 #import the db object from __init__.py to connect to the database
@@ -14,6 +16,7 @@ view = Blueprint('view', __name__)
     
 #create the main route to view all pantry items and render the pantry.html template
 @view.route('/pantry', methods=['GET'])
+@login_required  #require user to be logged in to access this route
 def pantry():
     #creat the PantryForm instance
     pantry_form = PantryForm()
@@ -25,6 +28,7 @@ def pantry():
 #create an api route to add (POST) a new pantry item
 #functionality for the DOM will be implemented in the pantry.js file
 @view.route('/api/pantry/add-ingredient', methods=['POST'])
+@login_required  #require user to be logged in to access this route
 def add_ingredient():
     #create the PantryForm instance
     pantry_form = PantryForm()
@@ -62,6 +66,7 @@ def add_ingredient():
 #create an api route to delete a pantry item from the database
 #functionality for the DOM will be implemented in the pantry.js file
 @view.route('/api/pantry/delete-ingredient/<int:id>', methods=['DELETE'])
+@login_required  #require user to be logged in to access this route
 def delete_ingredient(id:int):
     #query the Pantry model to get the pantry item by id
     pantry_item_to_delete = Pantry.query.get_or_404(id)

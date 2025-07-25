@@ -90,3 +90,12 @@ def login():
             return redirect(url_for('auth.login', error='Invalid username or password'))
     #else we want to render the login template with the form
     return render_template('auth/login.html', form=form)
+
+#create a route for logout
+@view_auth.route('/logout', methods=["GET", "POST"])
+@login_required #cant logout if not logged in
+def logout():
+    #log out the user
+    logout_user()
+    #redirect to the login page
+    return redirect(url_for('auth.login'))
