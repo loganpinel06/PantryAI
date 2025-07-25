@@ -6,7 +6,7 @@ from flask import Blueprint, render_template, session, redirect, url_for
 #import Flask-Login
 from flask_login import login_user, login_required, logout_user
 #impor the RegisterForm and the LoginForm from forms.py
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 #import the user model from models.py
 from .models import User
 #import the db object and login manager from __init__.py
@@ -59,3 +59,34 @@ def register():
                 return redirect(url_for('auth.register', error='Error registering user: {}'.format(e)))
     #else we want to render the register template with the form
     return render_template('auth/register.html', form=form)
+
+#create the login route
+@view_auth.route('/', methods=['GET', 'POST'])
+def login():
+    #create the login form
+    form = LoginForm()
+    #check if the form is validated on submit (POST METHOD)
+    if form.validate_on_submit():
+        #get the username and password from the form
+        username = form.username.data
+        password = form.password.data
+        #query the database for the user with the given username
+        user = User.query.filter_by(username=username).first()
+        #check if the user exists and if the password is correct
+        if user and user.check_password(password):
+            #try, except block to handle any errors during login
+            try:
+                #log in the user using Flask-Login
+                login_user(user)
+                #redirect to the pantry page after successful login
+                return redirect(url_for('view.pantry'))
+            #ERROR
+            except Exception as e:
+                #redirect back to the login page with an error message
+                return redirect(url_for('auth.login', error='Error logging in: {}'.format(e)))
+        #incorrect username or password
+        else:
+            #if login fails, redirect back to the login page with an error message
+            return redirect(url_for('auth.login', error='Invalid username or password'))
+    #else we want to render the login template with the form
+    return render_template('auth/login.html', form=form)

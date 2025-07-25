@@ -16,6 +16,13 @@ class RegisterForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password: ', validators=[DataRequired(), EqualTo('password', message='Passwords must match')])
     submit = SubmitField('Register')
 
+#create a form class for the LoginForm
+class LoginForm(FlaskForm):
+    #create the fields
+    username = StringField('Username: ', validators=[DataRequired()])
+    password = PasswordField('Password: ', validators=[DataRequired()])
+    submit = SubmitField('Login')
+
 #create a form class for adding pantry items
 class PantryForm(FlaskForm):
     #ingredient field with a data required validator

@@ -13,7 +13,7 @@ from .forms import PantryForm
 view = Blueprint('view', __name__)
     
 #create the main route to view all pantry items and render the pantry.html template
-@view.route('/', methods=['GET'])
+@view.route('/pantry', methods=['GET'])
 def pantry():
     #creat the PantryForm instance
     pantry_form = PantryForm()

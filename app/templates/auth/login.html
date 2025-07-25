@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- div for login form -->
+ <div class="loginForm">
+    <!-- Main h2 for the login page -->
+    <h2>Login</h2>
+    <!-- Login Form -->
+    <form action="{{url_for('auth.login')}}" method="POST">
+        <!-- CSRF Token for security and other hidden elements -->
+        {{form.hidden_tag()}}
+        <!-- Username -->
+        {{form.username.label}} 
+        {{form.username(placeholder="Enter your username")}}
+        <!-- Password -->
+        {{form.password.label}}
+        {{form.password(placeholder="Enter your password")}}
+        <!-- Submit -->
+        {{form.submit()}}
+        <!-- Link to register page -->
+        <p>Don't have an account? <a href="{{url_for('auth.register')}}">Register here</a></p>
+    </form>
+</div>
+
+{% endblock %}
