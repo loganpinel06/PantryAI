@@ -68,4 +68,47 @@ header {
   border: 2px solid white;
   border-radius: 5px;
   background-color: #F08080;
+}
+
+.loginForm, .registerForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 20px;
+}
+.loginForm h2, .registerForm h2 {
+  font-size: 36px;
+}
+.loginForm label, .registerForm label {
+  font-size: 18px;
+  font-weight: 800;
+}
+.loginForm input, .registerForm input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 2px solid black;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.loginForm input[type=submit], .registerForm input[type=submit] {
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+}
+.loginForm input[type=submit]:hover, .registerForm input[type=submit]:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+.loginForm p, .registerForm p {
+  text-align: center;
+}
+.loginForm p > a, .registerForm p > a {
+  color: #e9b759;
+  font-weight: 600;
 }/*# sourceMappingURL=styles.css.map */
