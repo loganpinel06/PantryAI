@@ -4,6 +4,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from google import genai
+import os
+import dotenv
 
 #initialize the database
 db = SQLAlchemy()
@@ -11,8 +14,17 @@ db = SQLAlchemy()
 #initialize the login manager for user authentication
 login_manager = LoginManager()
 
+#initialize the Gemini client (will be configured in create_app)
+gemini_client = None
+
 #create the Flask application instance
 def create_app():
+    #call the global variable to access the gemini_client
+    global gemini_client
+    
+    #load environment variables
+    dotenv.load_dotenv()
+    
     #create the Flask app
     app = Flask(__name__)
 
@@ -42,6 +54,17 @@ def create_app():
     #create the database using a context manager
     with app.app_context():
         db.create_all()
+
+    #initialize the Gemini client
+    #get the api key from the .env file
+    gemini_api_key = os.getenv('GENAI_API_KEY')
+    #make sure the api key exists
+    if gemini_api_key:
+        #setup the gemini client with the api key
+        gemini_client = genai.Client(api_key=gemini_api_key)
+    #incase of errors, print an error message (CHANGE THIS FROM PRINT LATER)
+    else:
+        print("Warning: GENAI_API_KEY not found in environment variables")
 
     #return the app instance
     return app
