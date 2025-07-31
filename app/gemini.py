@@ -4,10 +4,16 @@
 from google import genai
 from . import genai_client
 
-#test a response
-response = genai_client.models.generate_content(
-    model="gemini-2.5-flash-lite",
-    contents="Please Generate a recipe for a basic mexican dish"
-)
+#create a method to prompt the Gemini API for a recipe
+def generate_recipe(ingredients_list, meal_type):
+    #create a prompt for the Gemini API
+    prompt = f"Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}"
 
-print(response.text)
+    #send the prompt to the Gemini API
+    response = genai_client.models.generate_content(
+        model="gemini-2.5-flash-lite",
+        contents=prompt
+    )
+
+    #return the response text
+    return response
