@@ -13,6 +13,11 @@ def generate_recipe(ingredients_list, meal_type):
     response = genai_client.models.generate_content(
         model="gemini-2.5-flash-lite",
         contents=prompt
+        #Disable thinking (CODE FROM GEMINI API DOCS)
+        #this will reduce the response time and token usage/costs
+        config=types.GenerateContentConfig(
+        thinking_config=types.ThinkingConfig(thinking_budget=0)
+        ),
     )
 
     #return the response text
