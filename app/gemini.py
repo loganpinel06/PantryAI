@@ -2,6 +2,7 @@
 
 #imports
 from google import genai
+from google.genai import types
 from . import genai_client
 
 #create a method to prompt the Gemini API for a recipe
@@ -12,7 +13,7 @@ def generate_recipe(ingredients_list, meal_type):
     #send the prompt to the Gemini API
     response = genai_client.models.generate_content(
         model="gemini-2.5-flash-lite",
-        contents=prompt
+        contents=prompt,
         #Disable thinking (CODE FROM GEMINI API DOCS)
         #this will reduce the response time and token usage/costs
         config=types.GenerateContentConfig(
