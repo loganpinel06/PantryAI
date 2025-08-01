@@ -9,7 +9,7 @@ from .models import Pantry
 #import the db object from __init__.py to connect to the database
 from . import db
 #import the Flask-WTF forms from forms.py
-from .forms import PantryForm
+from .forms import PantryForm, GenerateRecipesForm
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
@@ -18,12 +18,13 @@ view = Blueprint('view', __name__)
 @view.route('/pantry', methods=['GET'])
 @login_required  #require user to be logged in to access this route
 def pantry():
-    #create the PantryForm instance
+    #create the PantryForm and GenerateRecipesForm instance
     pantry_form = PantryForm()
+    recipe_form = GenerateRecipesForm()
     #query the Pantry model to get all pantry items for the current user
     pantry_items = Pantry.query.filter_by(user_id=current_user.id).all()
     #render the pantry.html template with the pantry items
-    return render_template('pantry.html', pantry_items=pantry_items, pantry_form=pantry_form)
+    return render_template('pantry.html', pantry_items=pantry_items, pantry_form=pantry_form, recipe_form=recipe_form)
 
 #create an api route to add (POST) a new pantry item
 #functionality for the DOM will be implemented in the pantry.js file
