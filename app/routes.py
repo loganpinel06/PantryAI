@@ -18,12 +18,12 @@ view = Blueprint('view', __name__)
 @view.route('/pantry', methods=['GET'])
 @login_required  #require user to be logged in to access this route
 def pantry():
-    #creat the PantryForm instance
+    #create the PantryForm instance
     pantry_form = PantryForm()
     #query the Pantry model to get all pantry items for the current user
     pantry_items = Pantry.query.filter_by(user_id=current_user.id).all()
     #render the pantry.html template with the pantry items
-    return render_template('pantry.html', pantry_items=pantry_items, form=pantry_form)
+    return render_template('pantry.html', pantry_items=pantry_items, pantry_form=pantry_form)
 
 #create an api route to add (POST) a new pantry item
 #functionality for the DOM will be implemented in the pantry.js file

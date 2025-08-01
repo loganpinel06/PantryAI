@@ -15,6 +15,7 @@
     </nav>
 </header>
 
+<!-- Pantry Table -->
 <div class="tabledata">
     <table>
         <thead>
@@ -34,22 +35,43 @@
     </table>
 </div>
 
+<!-- Pantry Form -->
 <div class="pantry_form">
     <form id="pantry-form" method="POST">
         <!-- CSRF Token for security and other hidden elements -->
-        {{ form.hidden_tag() }}
+        {{ pantry_form.hidden_tag() }}
         <!-- Nest the form fields in divs to give the form rows -->
         <div class="form-row">
             <!-- Ingredient Input -->
-            {{ form.ingredient.label }} 
-            {{ form.ingredient() }}
+            {{ pantry_form.ingredient.label }} 
+            {{ pantry_form.ingredient() }}
         </div>
         <div class="form-row">
             <!-- Submit Button -->
-            {{ form.submit() }}
+            {{ pantry_form.submit() }}
         </div>
     </form>
 </div>
+
+<!-- Recipe Generation Section -->
+<!-- Meal Type Form -->
+<div class="meal_type_form">
+    <form id="meal-type-form" method="POST">
+        <!-- CSRF Token for security and other hidden elements -->
+        {{ recipe_form.hidden_tag() }}
+        <!-- Nest the form fields in divs to give the form rows -->
+        <div class="form-row">
+            <!-- Ingredient Input -->
+            {{ recipe_form.meal_type.label }} 
+            {{ recipe_form.meal_type() }}
+        </div>
+        <div class="form-row">
+            <!-- Submit Button -->
+            {{ recipe_form.submit() }}
+        </div>
+    </form>
+</div>
+
     
 
 {% endblock %}

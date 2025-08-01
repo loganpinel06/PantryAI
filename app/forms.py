@@ -2,7 +2,7 @@
 
 #imports
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, PasswordField
+from wtforms import StringField, SubmitField, PasswordField, RadioField
 from wtforms.validators import DataRequired, Regexp, Length, EqualTo
 
 #create a form class for the RegisterForm
@@ -29,3 +29,13 @@ class PantryForm(FlaskForm):
     ingredient = StringField('Ingredient: ', id='ingredient-input', validators=[DataRequired()])
     #submit button
     submit = SubmitField('Add Ingredient', id='submit-button')
+
+#create a form class for generating recipes
+class GenerateRecipesForm(FlaskForm):
+    #users need to select a meal type before generating recipes
+    #meal_type field with a radio button for breakfast, lunch, or dinner
+    #note: choices are touples, 'breakfast' is whats sent to the server, 'Breakfast' is what is displayed to the page
+    meal_type = RadioField('Meal Type: ', choices=[('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner')], 
+                            validators=[DataRequired()], default='breakfast')
+    #submit button
+    submit = SubmitField('Generate Recipes', id='meal-type-submit')
