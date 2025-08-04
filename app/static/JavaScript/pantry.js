@@ -1,3 +1,6 @@
+//Pantry.js will handle all DOM manipulation for the pantry_table and pantry_form sections of the pantry.html template
+//by using the Fetch API to communicate with the Flask server and update the pantry items dynamically
+
 //create a async function to fetch the pantry items returned from the flask form on the server
 const fetchPantryItems = async (event) => {
     //prevent the default form submission behavior

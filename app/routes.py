@@ -6,6 +6,8 @@ from flask import Blueprint, render_template, redirect, url_for, jsonify
 from flask_login import login_required, current_user
 #import the Pantry model
 from .models import Pantry
+#import the generate_recipe function from the gemini client
+from .gemini import generate_recipe
 #import the db object from __init__.py to connect to the database
 from . import db
 #import the Flask-WTF forms from forms.py
@@ -88,3 +90,31 @@ def delete_ingredient(id:int):
         return jsonify({
             'error': 'Error deleting pantry item: {}'.format(e)
         }), 500 # HTTP status code 500 for server error
+    
+#HANDLE THE API ROUTES FOR USING GEMINI API
+@view.route('/api/gemini/generate-recipes', methods=['POST'])
+@login_required  #require user to be logged in to access this route
+def generate_recipes():
+    #query the Pantry model to get all pantry items for the current user
+    pantry_items = Pantry.query.filter_by(user_id=current_user.id).all()
+    #create an instance of the GenerateRecipesForm
+    recipe_form = GenerateRecipesForm()
+    #check if the form is submitted (POST METHOD)
+    if recipe_form.validate_on_submit():
+        #try, except block to handle errors when generating recipes
+        try:
+            #get the meal type from the form
+            meal_type = recipe_form.meal_type.data
+            #create a list of ingredients from the pantry items using list comprehension
+            ingredients_list = [item.ingredient for item in pantry_items]
+            #call the generate_recipe function from the gemini client
+            #pass the ingredients_list and meal_type to the function
+            response = generate_recipe(ingredients_list, meal_type)
+            #return the Gemini response which is already formatted as JSON
+            return response
+        #ERROR
+        except Exception as e:
+            #return the error message
+            return jsonify({
+                'error': 'Error generating recipes: {}'.format(e)
+            }), 500
