@@ -113,18 +113,39 @@ const generateRecipes = async (event) => {
         
         //create new divs for each recipe and append them to the recipes div
         recipesData.forEach(recipe => {
-            const recipeDiv = document.createElement('div');
-            recipeDiv.className = 'recipe-item';
-            recipeDiv.innerHTML = `
-                <h3>${recipe.recipe_name}</h3>
-                <h4>Ingredients:</h4>
-                <ul>
-                    ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
-                </ul>
-                <h4>Instructions:</h4>
-                <p>${recipe.instructions}</p>
+            //create a new div for the recipe button and dialog
+            const recipeButtonDiv = document.createElement('div');
+            //set the class name and inner HTML for the recipe button and dialog
+            recipeButtonDiv.className = 'recipe-button-div';
+            recipeButtonDiv.innerHTML = `
+                <button class="recipe-button">${recipe.recipe_name}</button>
+                <dialog class="recipe-dialog">
+                    <h3>${recipe.recipe_name}</h3>
+                    <h4>Ingredients:</h4>
+                    <ul>
+                        ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+                    </ul>
+                    <h4>Instructions:</h4>
+                    <p>${recipe.instructions}</p>
+                    <button class="close-dialog">Close</button>
+                </dialog>
             `;
-            recipesDiv.appendChild(recipeDiv);
+            //add event listeners to the recipe and close buttons
+            //get the HTML elements
+            const recipeButton = recipeButtonDiv.querySelector('.recipe-button');
+            const recipeDialog = recipeButtonDiv.querySelector('.recipe-dialog');
+            const closeDialogButton = recipeButtonDiv.querySelector('.close-dialog');
+            //handle the events
+            recipeButton.addEventListener('click', () => {
+                //open the dialog when the recipe button is clicked
+                recipeDialog.showModal();
+            });
+            closeDialogButton.addEventListener('click', () => {
+                //close the dialog when the close button is clicked
+                recipeDialog.close();
+            });
+            //append the recipe button div to the recipes div
+            recipesDiv.appendChild(recipeButtonDiv);
         });
 
         //reset the form
