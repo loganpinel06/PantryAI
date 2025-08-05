@@ -12,7 +12,7 @@ from flask import current_app
 class Recipe(BaseModel):
     recipe_name: str
     ingredients: list[str]
-    instructions: str
+    instructions: list[str]
 
 #create a method to prompt the Gemini API for a recipe
 def generate_recipe(ingredients_list, meal_type):
@@ -32,7 +32,7 @@ def generate_recipe(ingredients_list, meal_type):
         gemini_client = current_app.gemini_client
         
         #create a prompt for the Gemini API
-        prompt = f"Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}"
+        prompt = f"Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}. Please provide detailed instructions for how to prepare each recipe."
 
         #send the prompt to the Gemini API
         response = gemini_client.models.generate_content(

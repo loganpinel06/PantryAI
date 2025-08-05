@@ -126,7 +126,9 @@ const generateRecipes = async (event) => {
                         ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
                     </ul>
                     <h4>Instructions:</h4>
-                    <p>${recipe.instructions}</p>
+                    <ol>
+                        ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
+                    </ol>
                     <button class="close-dialog">Close</button>
                 </dialog>
             `;
