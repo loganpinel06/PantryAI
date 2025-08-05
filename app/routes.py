@@ -2,7 +2,7 @@
 
 #imports
 from flask import Blueprint, render_template, redirect, url_for, jsonify
-#import Flask-Login for user authentication
+#import the Flask-Login for user authentication
 from flask_login import login_required, current_user
 #import the Pantry model
 from .models import Pantry
@@ -12,6 +12,8 @@ from .gemini import generate_recipe
 from . import db
 #import the Flask-WTF forms from forms.py
 from .forms import PantryForm, GenerateRecipesForm
+#import json module to handle JSON parsing
+import json
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
@@ -110,8 +112,9 @@ def generate_recipes():
             #call the generate_recipe function from the gemini client
             #pass the ingredients_list and meal_type to the function
             response = generate_recipe(ingredients_list, meal_type)
-            #return the Gemini response which is already formatted as JSON
-            return response
+            #parse the JSON response from Gemini and return it as proper JSON
+            recipes_data = json.loads(response)
+            return jsonify(recipes_data)
         #ERROR
         except Exception as e:
             #return the error message

@@ -4,7 +4,8 @@
 from google import genai
 from google.genai import types
 from pydantic import BaseModel
-from . import gemini_client
+#import the current_app context to access the gemini client from the Flask app
+from flask import current_app
 
 #create a pydantic BaseModel for the recipe request
 #this will be used to help format Gemini's response to JSON data for easier handling on the frontend
@@ -27,6 +28,9 @@ def generate_recipe(ingredients_list, meal_type):
     """
     #try, except block to handle errors when generating a recipe
     try:
+        # Get the gemini_client from the Flask app context
+        gemini_client = current_app.gemini_client
+        
         #create a prompt for the Gemini API
         prompt = f"Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}"
 
@@ -46,5 +50,5 @@ def generate_recipe(ingredients_list, meal_type):
         #return the error message (CHANGE THIS FROM PRINT LATER)
         return f"Error generating recipe: {e}"
 
-    #return the response text
-    return response
+    #return the response text as JSON data
+    return response.text
