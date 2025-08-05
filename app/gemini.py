@@ -32,7 +32,11 @@ def generate_recipe(ingredients_list, meal_type):
         gemini_client = current_app.gemini_client
         
         #create a prompt for the Gemini API
-        prompt = f"Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}. Please provide detailed instructions for how to prepare each recipe."
+        prompt = f"""
+        Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}. 
+        Provide detailed instructions for how to prepare each recipe.
+        Additionally, you are not required to use all the ingredients provided to you, but you may only use the ingredients provided.
+        """
 
         #send the prompt to the Gemini API
         response = gemini_client.models.generate_content(
