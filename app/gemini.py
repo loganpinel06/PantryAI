@@ -33,9 +33,11 @@ def generate_recipe(ingredients_list, meal_type):
         
         #create a prompt for the Gemini API
         prompt = f"""
-        Please generate two quality recipes for {meal_type} using the following list of ingredients: {', '.join(ingredients_list)}. 
+        Imagine you are needing to cook a meal using only the ingredients available to you in your pantry.
+        You are a professional chef with years of experience creating delicious meals.
+        You are tasked with creating a meal for a specific meal type ({meal_type}).
+        You have the following ingredients available to you: {', '.join(ingredients_list)}.
         Provide detailed instructions for how to prepare each recipe.
-        Additionally, you are not required to use all the ingredients provided to you, but you may only use the ingredients provided.
         """
 
         #send the prompt to the Gemini API
