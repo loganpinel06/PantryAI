@@ -37,7 +37,7 @@ def generate_recipe(ingredients_list, meal_type):
         You are a professional chef with years of experience creating delicious meals.
         You are tasked with creating a meal for a specific meal type ({meal_type}).
         You have the following ingredients available to you: {', '.join(ingredients_list)}.
-        Provide detailed instructions for how to prepare each recipe.
+        Please create two quality recipes and provide detailed instructions for how to prepare each recipe.
         """
 
         #send the prompt to the Gemini API
