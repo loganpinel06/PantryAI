@@ -40,7 +40,7 @@ const fetchPantryItems = async (event) => {
         newDeleteButton.addEventListener('click', deletePantryItem);
         //reset the value of the input field
         form.reset();
-            
+    //catch any errors
     } catch (error) {
         //log the error to the console
         console.error('Error fetching pantry items:', error);
@@ -79,6 +79,7 @@ const deletePantryItem = async (event) => {
         if (!rowFound) { //log an error message if no matching row is found
             console.log(`No matching row found for an ingredient with id: ${pantryData.id}`);
         }
+    //catch any errors
     } catch (error) {
         //log the error to the console
         console.error('Error deleting pantry item:', error);
@@ -153,10 +154,40 @@ const generateRecipes = async (event) => {
 
         //reset the form
         form.reset();
-
+    //catch any errors
     } catch (error) {
         //log the error to the console
         console.error('Error generating recipes:', error);
+    }
+};
+
+//create an async function to handle saving a recipe
+const saveRecipe = async (recipe) => {
+    //try, catch block to handle errors
+    try {
+        //fetch the save recipe route on the server
+        const response = await fetch('/api/gemini/save-recipe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                recipe: recipe.recipe_name,
+                meal_type: recipe.meal_type,
+                ingredients: recipe.ingredients,
+                instructions: recipe.instructions,
+            }),
+        });
+        //check if the response is not ok and throw an error
+        if (!response.ok) {
+            throw new Error('Problem saving recipe to server route: /api/gemini/save-recipe');
+        }
+        //parse the response as JSON
+        const savedRecipe = await response.json();
+    //catch any errors
+    } catch (error) {
+        //log the error to the console
+        console.error('Error saving recipe:', error);
     }
 };
 

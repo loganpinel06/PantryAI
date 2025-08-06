@@ -142,10 +142,8 @@ def save_recipe():
         db.session.commit()
         #return a json response with the saved recipe data
         return jsonify({
-            'id': new_saved_recipe.id,
-            'recipe': new_saved_recipe.recipe,
-            'meal_type': new_saved_recipe.meal_type
-        }), 201  # HTTP status code 201 for created
+            'message': 'Recipe saved successfully',
+        }), 200  # HTTP status code 200 for success
     #ERROR
     except Exception as e:
         #rollback the SavedRecipes object from the db session in case of an error
