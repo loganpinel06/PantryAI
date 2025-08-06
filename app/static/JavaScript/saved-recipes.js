@@ -24,3 +24,31 @@ closeDialogButton.addEventListener('click', () => {
     recipeDialog.close();
 });
 //deleteSavedRecipeButton (delete saved recipe by calling api route)
+deleteSavedRecipeButton.addEventListener('click', async () => {
+    //try, catch block to handle errors
+    try {
+        //fetch the delete saved recipe route on the server which will trigger the deletion of the recipe from the database
+        const response = await fetch(`/api/gemini/delete-recipe/${deleteSavedRecipeButton.dataset.recipeId}`, {
+            method: 'DELETE'
+        });
+        //check if the response is not ok and throw an error
+        if (!response.ok) {
+            throw new Error('Error fetching saved recipe to delete from server route: /api/gemini/delete-recipe');
+        }
+        //parse the response as JSON (best practice even if we don't use it)
+        const result = await response.json();
+        
+        //now clean up the DOM by removing the parent recipe-card element of the delete button and closing the dialog modal
+        //get the recipe card we need to delete (closest parent to the deleteSavedRecipeButton with class recipe-card)
+        const recipeCardToDelete = deleteSavedRecipeButton.closest('.recipe-card');
+        //get the dialog modal to close it (closest parent to the deleteSavedRecipeButton with class recipe-dialog)
+        const dialogToClose = deleteSavedRecipeButton.closest('.recipe-dialog');
+        //close the dialog modal
+        dialogToClose.close();
+        //remove the recipe card from the DOM
+        recipeCardToDelete.remove();
+    //catch any errors
+    } catch (error) {
+        console.error("Error deleting saved recipe:",error);
+    }
+});

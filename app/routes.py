@@ -191,3 +191,31 @@ def save_recipe():
             return jsonify({
                 'error': 'Error saving recipe: {}'.format(e)
             }), 500
+        
+#create an api route to delete a saved recipe from the database
+@view.route('/api/gemini/delete-recipe/<int:id>', methods=['DELETE'])
+@login_required  #require user to be logged in to access this route
+def delete_recipe(id:int):
+    #get the saved recipe from the database
+    saved_recipe = SavedRecipes.query.filter_by(id=id, user_id=current_user.id).first()
+    #if the saved recipe does not exist, return an error message
+    if not saved_recipe:
+        return jsonify({
+            'error': 'Saved recipe not found.'
+        }), 404  # HTTP status code 404 for not found
+    #else, delete the saved recipe from the database
+    try:
+        #connect to the db and delete the saved recipe
+        db.session.delete(saved_recipe)
+        db.session.commit()
+        return jsonify({
+            'message': 'Saved recipe deleted successfully.'
+        }), 200  # HTTP status code 200 for success
+    #ERROR
+    except Exception as e:
+        #rollback the db session in case of an error
+        db.session.rollback()
+        #return the error message
+        return jsonify({
+            'error': 'Error deleting saved recipe: {}'.format(e)
+        }), 500

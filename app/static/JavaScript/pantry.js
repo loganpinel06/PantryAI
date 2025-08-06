@@ -185,7 +185,7 @@ const saveRecipe = async (recipe) => {
         if (!response.ok) {
             throw new Error('Problem saving recipe to server route: /api/gemini/save-recipe');
         }
-        //parse the response as JSON
+        //parse the response as JSON (best practice even if we don't use it)
         const savedRecipe = await response.json();
     //catch any errors
     } catch (error) {
