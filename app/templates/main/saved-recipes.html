@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block scripts %}
+    <script src="{{ url_for('static', filename='JavaScript/saved-recipes.js') }}" defer></script>
+{% endblock %}
+
 {% block content %}
 
 <header>
