@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header>
+    <h1>PantryAI</h1>
+    <nav class="navbar">    
+        <ul>
+            <li><a href="{{ url_for('view.pantry')}}">Pantry</a></li>
+            <li><a href="{{url_for('auth.logout')}}" id="logoutlink">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Saved Recipes -->
+<div class="saved-recipes-div">
+    <h2>Saved Recipes</h2>
+    {% for saved_recipe in saved_recipes %}
+        <div class="recipe-card">
+            <button class="saved-recipe-button">{{saved_recipe.recipe.recipe_name}}</button>
+            <dialog class="recipe-dialog">
+                <h3>{{saved_recipe.recipe.recipe_name}}</h3>
+                <h4>Meal Type: {{saved_recipe.meal_type}}</h4>
+                <h4>Ingredients:</h4>
+                <ul>
+                    {% for ingredient in saved_recipe.recipe.ingredients %}
+                        <li>{{ingredient}}</li>
+                    {% endfor %}
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    {% for instruction in saved_recipe.recipe.instructions %}
+                        <li>{{instruction}}</li>
+                    {% endfor %}
+                </ol>
+                <button class="close-dialog">Close</button>
+                <button class="delete-saved-recipe" data-recipe-id="{{saved_recipe.id}}">Delete Recipe</button>
+            </dialog>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

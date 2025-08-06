@@ -32,7 +32,16 @@ def pantry():
     #query the Pantry model to get all pantry items for the current user
     pantry_items = Pantry.query.filter_by(user_id=current_user.id).all()
     #render the pantry.html template with the pantry items
-    return render_template('pantry.html', pantry_items=pantry_items, pantry_form=pantry_form, recipe_form=recipe_form)
+    return render_template('main/pantry.html', pantry_items=pantry_items, pantry_form=pantry_form, recipe_form=recipe_form)
+
+#create a route to view the saved recipes and render the saved-recipes.html template
+@view.route('/saved-recipes', methods=['GET'])
+@login_required  #require user to be logged in to access this route
+def saved_recipes():
+    #query the SavedRecipes model to get all saved recipes for the current user
+    saved_recipes = SavedRecipes.query.filter_by(user_id=current_user.id).all()
+    #render the saved-recipes.html template with the saved recipes
+    return render_template('main/saved-recipes.html', saved_recipes=saved_recipes)
 
 ###########
 #API ROUTES
