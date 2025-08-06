@@ -1,11 +1,11 @@
 #
 
 #imports
-from flask import Blueprint, render_template, redirect, url_for, jsonify
+from flask import Blueprint, render_template, redirect, url_for, jsonify, request
 #import the Flask-Login for user authentication
 from flask_login import login_required, current_user
-#import the Pantry model
-from .models import Pantry
+#import the Pantry and SavedRecipes models
+from .models import Pantry, SavedRecipes
 #import the generate_recipe function from the gemini client
 from .gemini import generate_recipe
 #import the db object from __init__.py to connect to the database
@@ -121,3 +121,36 @@ def generate_recipes():
             return jsonify({
                 'error': 'Error generating recipes: {}'.format(e)
             }), 500
+        
+#create an api route to save a recipe to the user's saved recipes
+@view.route('/api/gemini/save-recipe', methods=['POST'])
+@login_required  #require user to be logged in to access this route
+def save_recipe():
+    #get the recipe data from the request JSON
+    recipe_data = request.json
+    #create a new SavedRecipes object with the current user's id
+    new_saved_recipe = SavedRecipes(
+        user_id=current_user.id,
+        recipe=recipe_data['recipe'],
+        meal_type=recipe_data['meal_type']
+    )
+    #try, except block to handle errors when saving the recipe
+    try:
+        #connect to the db and add the saved recipe object
+        db.session.add(new_saved_recipe)
+        #commit the SavedRecipes object to the db
+        db.session.commit()
+        #return a json response with the saved recipe data
+        return jsonify({
+            'id': new_saved_recipe.id,
+            'recipe': new_saved_recipe.recipe,
+            'meal_type': new_saved_recipe.meal_type
+        }), 201  # HTTP status code 201 for created
+    #ERROR
+    except Exception as e:
+        #rollback the SavedRecipes object from the db session in case of an error
+        db.session.rollback()
+        #return the error message
+        return jsonify({
+            'error': 'Error saving recipe: {}'.format(e)
+        }), 500
