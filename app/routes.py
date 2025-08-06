@@ -17,7 +17,11 @@ import json
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
-    
+
+###########
+#MAIN ROUTES WHICH RENDER HTML TEMPLATES
+#these routes will handle the main views of the application
+###########
 #create the main route to view all pantry items and render the pantry.html template
 @view.route('/pantry', methods=['GET'])
 @login_required  #require user to be logged in to access this route
@@ -30,6 +34,10 @@ def pantry():
     #render the pantry.html template with the pantry items
     return render_template('pantry.html', pantry_items=pantry_items, pantry_form=pantry_form, recipe_form=recipe_form)
 
+###########
+#API ROUTES
+#these routes will handle the API requests for the pantry items and recipes
+###########
 #create an api route to add (POST) a new pantry item
 #functionality for the DOM will be implemented in the pantry.js file
 @view.route('/api/pantry/add-ingredient', methods=['POST'])
@@ -128,27 +136,49 @@ def generate_recipes():
 def save_recipe():
     #get the recipe data from the request JSON
     recipe_data = request.json
-    #create a new SavedRecipes object with the current user's id
-    new_saved_recipe = SavedRecipes(
+    #check if the recipe already exists for the user
+    existing_recipe = SavedRecipes.query.filter_by(
         user_id=current_user.id,
-        recipe=recipe_data['recipe'],
+        recipe={
+            'recipe_name': recipe_data['recipe'],
+            'ingredients': recipe_data['ingredients'],
+            'instructions': recipe_data['instructions']
+        },
         meal_type=recipe_data['meal_type']
-    )
-    #try, except block to handle errors when saving the recipe
-    try:
-        #connect to the db and add the saved recipe object
-        db.session.add(new_saved_recipe)
-        #commit the SavedRecipes object to the db
-        db.session.commit()
-        #return a json response with the saved recipe data
+    ).first()
+    #if the recipe already exists, return an error message
+    if existing_recipe:
         return jsonify({
-            'message': 'Recipe saved successfully',
-        }), 200  # HTTP status code 200 for success
-    #ERROR
-    except Exception as e:
-        #rollback the SavedRecipes object from the db session in case of an error
-        db.session.rollback()
-        #return the error message
-        return jsonify({
-            'error': 'Error saving recipe: {}'.format(e)
-        }), 500
+            'error': 'Recipe already saved.'
+        }), 400  # HTTP status code 400 for bad request
+    #else, create a new SavedRecipes object
+    else:
+        #create a new SavedRecipes object with the current user's id
+        #store the entire recipe data as JSON (recipe name, ingredients, instructions)
+        new_saved_recipe = SavedRecipes(
+            user_id=current_user.id,
+            recipe={
+                'recipe_name': recipe_data['recipe'],
+                'ingredients': recipe_data['ingredients'],
+                'instructions': recipe_data['instructions']
+            },
+            meal_type=recipe_data['meal_type']
+        )
+        #try, except block to handle errors when saving the recipe
+        try:
+            #connect to the db and add the saved recipe object
+            db.session.add(new_saved_recipe)
+            #commit the SavedRecipes object to the db
+            db.session.commit()
+            #return a json response with the saved recipe data
+            return jsonify({
+                'message': 'Recipe saved successfully',
+            }), 200  # HTTP status code 200 for success
+        #ERROR
+        except Exception as e:
+            #rollback the SavedRecipes object from the db session in case of an error
+            db.session.rollback()
+            #return the error message
+            return jsonify({
+                'error': 'Error saving recipe: {}'.format(e)
+            }), 500

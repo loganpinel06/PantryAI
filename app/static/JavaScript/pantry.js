@@ -132,6 +132,7 @@ const generateRecipes = async (event) => {
                         ${recipe.instructions.map(instruction => `<li>${instruction}</li>`).join('')}
                     </ol>
                     <button class="close-dialog">Close</button>
+                    <button class="save-recipe">Save Recipe</button>
                 </dialog>
             `;
             //add event listeners to the recipe and close buttons
@@ -139,6 +140,7 @@ const generateRecipes = async (event) => {
             const recipeButton = recipeButtonDiv.querySelector('.recipe-button');
             const recipeDialog = recipeButtonDiv.querySelector('.recipe-dialog');
             const closeDialogButton = recipeButtonDiv.querySelector('.close-dialog');
+            const saveRecipeButton = recipeButtonDiv.querySelector('.save-recipe');
             //handle the events
             recipeButton.addEventListener('click', () => {
                 //open the dialog when the recipe button is clicked
@@ -148,6 +150,7 @@ const generateRecipes = async (event) => {
                 //close the dialog when the close button is clicked
                 recipeDialog.close();
             });
+            saveRecipeButton.addEventListener('click', () => saveRecipe(recipe));
             //append the recipe button div to the recipes div
             recipesDiv.appendChild(recipeButtonDiv);
         });
