@@ -11,6 +11,7 @@ from flask import current_app
 #this will be used to help format Gemini's response to JSON data for easier handling on the frontend
 class Recipe(BaseModel):
     recipe_name: str
+    meal_type: str
     ingredients: list[str]
     instructions: list[str]
 

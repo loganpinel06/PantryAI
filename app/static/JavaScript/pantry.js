@@ -121,6 +121,7 @@ const generateRecipes = async (event) => {
                 <button class="recipe-button">${recipe.recipe_name}</button>
                 <dialog class="recipe-dialog">
                     <h3>${recipe.recipe_name}</h3>
+                    <h4>Meal Type: ${recipe.meal_type}</h4>
                     <h4>Ingredients:</h4>
                     <ul>
                         ${recipe.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
