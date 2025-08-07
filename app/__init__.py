@@ -27,7 +27,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking for performance inhancement
 
     #configure the app's secret key for session management
-    app.config['SECRET_KEY'] = 'secret_key'
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
     #initialize the db
     db.init_app(app)
