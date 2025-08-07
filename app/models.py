@@ -4,8 +4,8 @@ from . import db
 from flask_login import UserMixin
 #import wekzeug.security for password hashing
 from werkzeug.security import generate_password_hash, check_password_hash
-#import JSON for handling JSON data
-from sqlalchemy import JSON
+#import JSONB for handling JSON data specifically with PostgreSQL
+from sqlalchemy.dialects.postgresql import JSONB
 
 #create the User model to store user information
 class User(UserMixin, db.Model):
@@ -52,7 +52,7 @@ class SavedRecipes(db.Model):
     #id field
     id = db.Column(db.Integer, primary_key=True)
     #recipe field
-    recipe = db.Column(db.JSON, nullable=False)
+    recipe = db.Column(JSONB, nullable=False)
     #meal_type field
     meal_type = db.Column(db.String(7), nullable=False)
 
