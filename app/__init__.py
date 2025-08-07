@@ -23,7 +23,7 @@ def create_app():
     app = Flask(__name__)
 
     #configure the apps database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pantry.db'  # SQLite database file
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SUPABASE_CONNECTION_STRING')  #PostegreSQL database hosted on Supabase
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking for performance inhancement
 
     #configure the app's secret key for session management
