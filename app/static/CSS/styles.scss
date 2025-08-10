@@ -122,6 +122,12 @@ header {
         }
     }
 
+    //additional styles for the special empty-pantry-message tr
+    //center the text in the td
+    tr#empty-pantry-message > td {
+        text-align: center;
+    }
+
 
     //target the delete button
     .delete-button {

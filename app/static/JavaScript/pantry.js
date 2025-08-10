@@ -1,6 +1,39 @@
 //Pantry.js will handle all DOM manipulation for the pantry_table, pantry_form, and generate_recipes_form sections of the pantry.html template
 //by using the Fetch API to communicate with the Flask server and update the pantry items dynamically
 
+//BASIC FUNCTIONS (Not API related)
+//function to check if the pantry is empty and display/hide a message telling users to add ingredients
+const checkPantryEmpty = () => {
+    //get the table body and any existing empty pantry messages from the DOM
+    const tableBody = document.getElementById('pantry-table-body');
+    //this should be null if there are pantry items, and an element if there are none
+    const existingMessage = document.getElementById('empty-pantry-message');
+    
+    //create a boolean variable to check if there are any rows in the table body
+    const hasItems = tableBody.querySelectorAll('tr').length > 0;
+    
+    //conditional logic
+    if (!hasItems) {
+        //if no items and no message exists, create and show the empty message
+        if (!existingMessage) {
+            //create a new tr element for the message
+            const emptyMessage = document.createElement('tr');
+            emptyMessage.id = 'empty-pantry-message';
+            emptyMessage.innerHTML = `
+                <td colspan="2">Pantry Empty! Add Ingredients!</td>
+            `;
+            //add the element to the tableBody
+            tableBody.appendChild(emptyMessage);
+        }
+    } else {
+        // If items exist and message is showing, remove the message
+        if (existingMessage) {
+            existingMessage.remove();
+        }
+    }
+};
+
+//API FUNCTIONS using Fetch API
 //create a async function to fetch the pantry items returned from the flask form on the server
 const fetchPantryItems = async (event) => {
     //prevent the default form submission behavior
@@ -40,6 +73,8 @@ const fetchPantryItems = async (event) => {
         newDeleteButton.addEventListener('click', deletePantryItem);
         //reset the value of the input field
         form.reset();
+        //check if the pantry is empty or not
+        checkPantryEmpty();
     //catch any errors
     } catch (error) {
         //log the error to the console
@@ -79,6 +114,8 @@ const deletePantryItem = async (event) => {
         if (!rowFound) { //log an error message if no matching row is found
             console.log(`No matching row found for an ingredient with id: ${pantryData.id}`);
         }
+        //check if the pantry is empty or not
+        checkPantryEmpty();
     //catch any errors
     } catch (error) {
         //log the error to the console
@@ -193,6 +230,10 @@ const saveRecipe = async (recipe) => {
         console.error('Error saving recipe:', error);
     }
 };
+
+//MAIN CODE WHEN DOCUMENT LOADS
+//check initial pantry state on page load
+checkPantryEmpty();
 
 //get the pantry form from the DOM so we can submit it
 const pantryForm = document.getElementById('pantry-form');
