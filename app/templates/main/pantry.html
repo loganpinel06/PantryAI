@@ -7,8 +7,9 @@
 {% block content %}
 
 <header>
-    <h1>PantryAI</h1>
-    <nav class="navbar">    
+    <h1 class="title">PantryAI</h1>
+    <nav>
+        <!-- ul with links to applicable pages and logout -->
         <ul>
             <li><a href="{{ url_for('view.saved_recipes')}}">Saved Recipes</a></li>
             <li><a href="{{url_for('auth.logout')}}" id="logoutlink">Logout</a></li>

@@ -11,12 +11,28 @@ body {
 
 header {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  padding: 10px 20px 0 20px;
+  border-bottom: 2px solid white;
+}
+header li, header a {
   font-size: 36px;
-  font-weight: 800;
-  text-align: center;
+  font-weight: 600;
+  text-decoration: none;
+}
+header .title {
+  margin-right: auto;
+  font-size: 48px;
+  font-weight: 600;
+}
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+header nav ul li {
+  list-style: none;
 }
 
 .tabledata {
@@ -102,13 +118,13 @@ header {
   border-radius: 10px;
 }
 .loginForm input[type=submit]:hover, .registerForm input[type=submit]:hover {
-  background-color: #f2f2f2;
+  background-color: rgb(242.25, 242.25, 242.25);
   cursor: pointer;
 }
 .loginForm p, .registerForm p {
   text-align: center;
 }
 .loginForm p > a, .registerForm p > a {
-  color: #e9b759;
+  color: rgb(233.1395348837, 182.8604651163, 88.8604651163);
   font-weight: 600;
 }/*# sourceMappingURL=styles.css.map */

@@ -24,15 +24,46 @@ body {
 //header styles
 header {
     //flexbox styles
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 20px 0 20px;
 
-        //font styles
+    //box model styles
+    border-bottom: 2px solid white;
+
+    //set default styles for the li, a elements
+    li, a {
         font-size: 36px;
-        font-weight: 800;
-        text-align: center;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    //target the title class
+    .title {
+        //box model styles
+        margin-right: auto;
+
+        //typography styles
+        font-size: 48px;
+        font-weight: 600;
+    }
+
+    //target the nav element
+    nav {
+        //target the ul element
+        ul {
+            //flexbox styles
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            //target the li elements
+            li {
+                //get rid of list styles
+                list-style: none;
+            }
+        }
+    }
 }
 
 //pantry.html .tabledata styles
