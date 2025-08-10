@@ -1,6 +1,6 @@
 body {
   font-family: "Open Sans", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   background-color: #252321;
   color: wheat;
   width: 100%;
@@ -41,11 +41,14 @@ header nav ul li {
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 35%;
   margin-right: 35%;
-  margin-bottom: 20px;
-  padding: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 .tabledata th {
   padding: 10px;
@@ -66,10 +69,12 @@ header nav ul li {
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-left: 35%;
   margin-right: 35%;
-  padding: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 .pantry_form .form-row {
   display: flex;
@@ -141,7 +146,7 @@ header nav ul li {
   background-color: white;
   color: #252321;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: 10px;
   border: 2px solid white;
   border-radius: 10px;
@@ -159,7 +164,7 @@ header nav ul li {
 .loginForm p, .registerForm p {
   text-align: center;
   margin-top: 20px;
-  font-size: 14px;
+  font-size: 1rem;
 }
 .loginForm p > a, .registerForm p > a {
   color: rgb(247.9651162791, 231.7848837209, 201.5348837209);

@@ -10,7 +10,7 @@ $text-color: wheat;
 //body styles
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     background-color: $background-color;
     color: $text-color;
 
@@ -76,11 +76,16 @@ header {
 
     //box model styles
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 35%;
     margin-right: 35%;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 30px;
+    
+    //enhanced visual effects
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
 
     //target the th
     th {
@@ -111,10 +116,14 @@ header {
 
     //box model styles
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 35%;
     margin-right: 35%;
-    padding: 20px;
+    padding: 30px;
+    
+    //enhanced visual effects
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
 
     //target the form rows
     .form-row {
@@ -210,7 +219,7 @@ header {
         background-color: white;
         color: $background-color;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 1rem;
         margin-top: 10px;
 
         //box model styles
@@ -234,7 +243,7 @@ header {
     p {
         text-align: center;
         margin-top: 20px;
-        font-size: 14px;
+        font-size: 1rem;
     }
 
     //select the p tags anchor element
