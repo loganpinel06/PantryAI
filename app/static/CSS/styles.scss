@@ -149,56 +149,103 @@ header {
 
     //box model styles
     border: 2px solid white;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-left: 35%;
     margin-right: 35%;
-    padding: 20px;
+    margin-top: 40px;
+    padding: 30px;
+    
+    //enhanced visual effects
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
 
     //style the h2
     h2 {
         font-size: 36px;
+        margin-bottom: 20px;
+        text-align: center;
+        letter-spacing: 1px;
     }
 
     //style the labels
     label {
         font-size: 18px;
         font-weight: 800;
+        margin-bottom: 5px;
+        display: block;
+        color: lighten($text-color, 10%);
     }
 
     //style the input fields
     input {
         //box model styles;
         width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 2px solid black;
-        border-radius: 5px;
+        padding: 12px 15px;
+        margin: 5px 0 15px 0;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 8px;
         //default browser styling will mess up the submit button so change box-sizing
-        box-sizing: border-box; 
+        box-sizing: border-box;
+        
+        //enhanced styling
+        background-color: rgba(255, 255, 255, 0.1);
+        color: $text-color;
+        font-size: 16px;
+        transition: all 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+        }
+
+        &::placeholder {
+            color: rgba($text-color, 0.6);
+        }
     }
 
     //more specific for the submit button
     input[type="submit"] {
         background-color: white;
+        color: $background-color;
+        font-weight: 600;
+        font-size: 16px;
+        margin-top: 10px;
 
         //box model styles
         border: 2px solid white;
         border-radius: 10px;
+        transition: all 0.3s ease;
 
         &:hover {
-            background-color: darken(white, 5%);
+            background-color: darken(white, 8%);
             cursor: pointer;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+        }
+
+        &:active {
+            transform: translateY(0);
         }
     }
 
     //select the p tag 
     p {
         text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
     }
 
     //select the p tags anchor element
     p > a {
-        color: darken($text-color, 20%);
+        color: lighten($text-color, 5%);
         font-weight: 600;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: white;
+        }
     }
 }
