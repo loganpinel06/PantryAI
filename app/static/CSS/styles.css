@@ -41,26 +41,54 @@ header nav ul li {
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-radius: 10px;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  border-radius: 16px;
+  margin: 40px 35% 40px 35%;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.03);
 }
+.tabledata table {
+  width: 100%;
+  border-spacing: 0 10px;
+}
+.tabledata th, .tabledata td {
+  padding: 1rem 0.8rem;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+}
 .tabledata th {
-  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 .tabledata td {
-  padding-left: 10px;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+.tabledata tr {
+  transition: background 0.2s;
+}
+.tabledata tr:hover {
+  background: rgba(255, 255, 255, 0.06);
 }
 .tabledata .delete-button {
-  width: 100%;
-  border: 2px solid white;
-  border-radius: 5px;
+  width: auto;
+  min-width: 5rem;
+  padding: 4px 6px;
+  border: 2px solid #F08080;
+  border-radius: 6px;
   background-color: #F08080;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #252321;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.tabledata .delete-button:hover {
+  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  color: white;
+  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
 }
 
 .pantry_form {
@@ -97,7 +125,7 @@ header nav ul li {
   align-items: center;
   justify-content: center;
   border: 2px solid white;
-  border-radius: 10px;
+  border-radius: 16px;
   margin-left: 35%;
   margin-right: 35%;
   margin-top: 40px;

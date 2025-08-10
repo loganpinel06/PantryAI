@@ -28,7 +28,7 @@ const fetchPantryItems = async (event) => {
         newRow.innerHTML = `
             <td>${pantryData.ingredient}</td>
             <td>
-                <button type="button" class="delete-button" data-id="${pantryData.id}">Delete</button>
+                <button type="button" class="delete-button" data-id="${pantryData.id}">&times;</button>
             </td>
         `;
         //set the newRow's dataset id to the pantry item id
