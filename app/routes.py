@@ -14,6 +14,9 @@ from . import db
 from .forms import PantryForm, GenerateRecipesForm
 #import json module to handle JSON parsing
 import json
+#import and_ and func from sqlalchemy to handle complex queries
+#used in saved recipes to check if a recipe already exists
+from sqlalchemy import and_, func
 
 #create a blueprint for the routes
 view = Blueprint('view', __name__)
@@ -146,14 +149,10 @@ def save_recipe():
     #get the recipe data from the request JSON
     recipe_data = request.json
     #check if the recipe already exists for the user
-    existing_recipe = SavedRecipes.query.filter_by(
-        user_id=current_user.id,
-        recipe={
-            'recipe_name': recipe_data['recipe'],
-            'ingredients': recipe_data['ingredients'],
-            'instructions': recipe_data['instructions']
-        },
-        meal_type=recipe_data['meal_type']
+    existing_recipe = SavedRecipes.query.filter(
+        SavedRecipes.user_id == current_user.id,
+        SavedRecipes.recipe['recipe_name'].astext == recipe_data['recipe'],
+        SavedRecipes.meal_type == recipe_data['meal_type']
     ).first()
     #if the recipe already exists, return an error message
     if existing_recipe:
@@ -171,7 +170,9 @@ def save_recipe():
                 'ingredients': recipe_data['ingredients'],
                 'instructions': recipe_data['instructions']
             },
-            meal_type=recipe_data['meal_type']
+            meal_type=recipe_data['meal_type'],
+            #store the recipe name for easy checking if a recipe already exists
+            recipe_name=recipe_data['recipe']  
         )
         #try, except block to handle errors when saving the recipe
         try:

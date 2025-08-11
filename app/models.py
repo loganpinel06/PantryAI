@@ -54,7 +54,9 @@ class SavedRecipes(db.Model):
     #recipe field
     recipe = db.Column(JSONB, nullable=False)
     #meal_type field
-    meal_type = db.Column(db.String(7), nullable=False)
+    meal_type = db.Column(db.String(10), nullable=False)
+    #create a recipe_name field for easily checking if a recipe already exists
+    recipe_name = db.Column(db.String(100), nullable=False)
 
     #override the __repr__ method to return a string representation of the SavedRecipes object's id
     def __repr__(self):
