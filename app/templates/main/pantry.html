@@ -17,64 +17,70 @@
     </nav>
 </header>
 
-<!-- Pantry Table -->
-<div class="tabledata">
-    <table>
-        <thead>
-            <th>Ingredient</th>
-            <th>Actions</th>
-        </thead>
-        <tbody id="pantry-table-body">
-            {% for item in pantry_items %}
-                <tr data-id="{{ item.id }}">
-                    <td>{{ item.ingredient }}</td>
-                    <td>
-                        <button type="button" class="delete-button" data-id="{{ item.id }}">&times;</button>
-                    </td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+<!-- Main Grid Layout Container -->
+<div class="pantry-layout">
+    <!-- Pantry Table (Left Side) -->
+    <div class="tabledata">
+        <table>
+            <thead>
+                <th>Ingredient</th>
+                <th>Actions</th>
+            </thead>
+            <tbody id="pantry-table-body">
+                {% for item in pantry_items %}
+                    <tr data-id="{{ item.id }}">
+                        <td>{{ item.ingredient }}</td>
+                        <td>
+                            <button type="button" class="delete-button" data-id="{{ item.id }}">&times;</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-<!-- Pantry Form -->
-<div class="pantry_form">
-    <form id="pantry-form" method="POST">
-        <!-- CSRF Token for security and other hidden elements -->
-        {{ pantry_form.hidden_tag() }}
-        <!-- Nest the form fields in divs to give the form rows -->
-        <div class="form-row">
-            <!-- Ingredient Input -->
-            {{ pantry_form.ingredient.label }} 
-            {{ pantry_form.ingredient() }}
+    <!-- Forms Section (Right Side) -->
+    <div class="forms-section">
+        <!-- Pantry Form -->
+        <div class="pantry_form">
+            <form id="pantry-form" method="POST">
+                <!-- CSRF Token for security and other hidden elements -->
+                {{ pantry_form.hidden_tag() }}
+                <!-- Nest the form fields in divs to give the form rows -->
+                <div class="form-row">
+                    <!-- Ingredient Input -->
+                    {{ pantry_form.ingredient.label }} 
+                    {{ pantry_form.ingredient() }}
+                </div>
+                <div class="form-row">
+                    <!-- Submit Button -->
+                    {{ pantry_form.submit() }}
+                </div>
+            </form>
         </div>
-        <div class="form-row">
-            <!-- Submit Button -->
-            {{ pantry_form.submit() }}
-        </div>
-    </form>
-</div>
 
-<!-- Recipe Generation Section -->
-<!-- Generate Recipes Form -->
-<div class="generate_recipes_form">
-    <form id="generate-recipes-form" method="POST">
-        <!-- CSRF Token for security and other hidden elements -->
-        {{ recipe_form.hidden_tag() }}
-        <!-- Nest the form fields in divs to give the form rows -->
-        <div class="form-row">
-            <!-- Ingredient Input -->
-            <!-- Containerize the label -->
-            <div class="meal-type-label">
-                {{ recipe_form.meal_type.label }}
-            </div>
-            {{ recipe_form.meal_type() }}
+        <!-- Recipe Generation Section -->
+        <!-- Generate Recipes Form -->
+        <div class="generate_recipes_form">
+            <form id="generate-recipes-form" method="POST">
+                <!-- CSRF Token for security and other hidden elements -->
+                {{ recipe_form.hidden_tag() }}
+                <!-- Nest the form fields in divs to give the form rows -->
+                <div class="form-row">
+                    <!-- Ingredient Input -->
+                    <!-- Containerize the label -->
+                    <div class="meal-type-label">
+                        {{ recipe_form.meal_type.label }}
+                    </div>
+                    {{ recipe_form.meal_type() }}
+                </div>
+                <div class="form-row">
+                    <!-- Submit Button -->
+                    {{ recipe_form.submit() }}
+                </div>
+            </form>
         </div>
-        <div class="form-row">
-            <!-- Submit Button -->
-            {{ recipe_form.submit() }}
-        </div>
-    </form>
+    </div>
 </div>
 <!-- Recipe Section (WILL BE HANDLED BY JAVASCRIPT) -->
 <div class="recipe_section">

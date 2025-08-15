@@ -35,14 +35,38 @@ header nav ul li {
   list-style: none;
 }
 
+.pantry-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "table forms";
+  gap: 2rem;
+  margin: 40px 2rem;
+}
+@media (max-width: 768px) {
+  .pantry-layout {
+    grid-template-columns: 1fr;
+    grid-template-areas: "table" "forms";
+    gap: 1rem;
+    margin: 20px 1rem;
+  }
+}
+
+.forms-section {
+  grid-area: forms;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .tabledata {
+  grid-area: table;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border: 2px solid white;
   border-radius: 16px;
-  margin: 40px 35% 40px 35%;
+  margin: 0;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.03);
@@ -101,8 +125,7 @@ header nav ul li {
   justify-content: center;
   border: 2px solid white;
   border-radius: 16px;
-  margin-left: 35%;
-  margin-right: 35%;
+  margin: 0;
   padding: 30px;
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
@@ -142,8 +165,7 @@ header nav ul li {
   justify-content: center;
   border: 2px solid white;
   border-radius: 16px;
-  margin-left: 35%;
-  margin-right: 35%;
+  margin: 0;
   padding: 30px;
   background: rgba(255, 255, 255, 0.03);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
