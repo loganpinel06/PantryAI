@@ -167,14 +167,14 @@ header {
 
     //box model styles
     border: 2px solid white;
-    border-radius: 10px;
+    border-radius: 16px;
     margin-left: 35%;
     margin-right: 35%;
     padding: 30px;
-    
+
     //enhanced visual effects
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    background-color: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 
     //target the form rows
     .form-row {
@@ -185,16 +185,36 @@ header {
         gap: 0.5rem;
         //box model styles
         margin: 10px;
+
+        //text styles
+        font-size: 1.25rem;
     }
 
     //target the submit button
     #submit-button {
         //box model styles
         width: 100%;
+        height: 35px;
         padding: 5px;
         border: 2px solid white;
-        border-radius: 5px;
+        border-radius: 6px;
         background-color: #F08080;
+
+        //text styles
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: $background-color;
+
+        cursor: pointer;
+
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+        &:hover {
+            background: darken(#F08080, 10%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+        }
+
     }
 }
 
