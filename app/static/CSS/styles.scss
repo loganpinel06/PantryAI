@@ -185,6 +185,7 @@ header {
         gap: 0.5rem;
         //box model styles
         margin: 10px;
+        margin-bottom: 15px;
 
         //text styles
         font-size: 1.25rem;
@@ -216,6 +217,84 @@ header {
         }
 
     }
+}
+
+//pantry.html .generate_recipes_form styles
+.generate_recipes_form {
+    //flexbox styles
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    //box model styles
+    border: 2px solid white;
+    border-radius: 16px;
+    margin-left: 35%;
+    margin-right: 35%;
+    padding: 30px;
+
+    //enhanced visual effects
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+
+    //target the form rows
+    .form-row {
+        //flexbox styles
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        //box model styles
+        margin: 20px 10px;
+
+        //text styles
+        font-size: 1.25rem;
+
+        //target the meal-type-label 
+        .meal-type-label {
+            //style as a title
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+        }
+    }
+
+    //target the submit button
+    #meal-type-submit {
+        //box model styles
+        width: 100%;
+        height: 35px;
+        padding: 5px 10px 5px 10px;
+        border: 2px solid white;
+        border-radius: 6px;
+        background-color: #F08080;
+
+        //text styles
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: $background-color;
+
+        cursor: pointer;
+
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+        &:hover {
+            background: darken(#F08080, 10%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+        }
+    }
+}
+
+//target the recipe_section 
+.recipe_section {
+    //flexbox styles
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 //LOGIN AND REGISTER PAGE STYLES

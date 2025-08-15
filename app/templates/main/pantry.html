@@ -64,7 +64,10 @@
         <!-- Nest the form fields in divs to give the form rows -->
         <div class="form-row">
             <!-- Ingredient Input -->
-            {{ recipe_form.meal_type.label }} 
+            <!-- Containerize the label -->
+            <div class="meal-type-label">
+                {{ recipe_form.meal_type.label }}
+            </div>
             {{ recipe_form.meal_type() }}
         </div>
         <div class="form-row">
