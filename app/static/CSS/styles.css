@@ -51,13 +51,6 @@ header nav ul li {
   }
 }
 
-.forms-section {
-  grid-area: forms;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
 .tabledata {
   grid-area: table;
   display: flex;
@@ -116,6 +109,13 @@ header nav ul li {
   background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
   color: white;
   box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+}
+
+.forms-section {
+  grid-area: forms;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .pantry_form {
@@ -208,6 +208,37 @@ header nav ul li {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px solid white;
+  border-radius: 16px;
+  margin: 0;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.recipe_section h2 {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.recipe_section .recipe-button {
+  width: 100%;
+  height: 55px;
+  padding: 5px;
+  border: 2px solid white;
+  border-radius: 6px;
+  background-color: #F08080;
+  margin: 10px 0 10px 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #252321;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.recipe_section .recipe-button:hover {
+  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  color: white;
+  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
 }
 
 .loginForm, .registerForm {

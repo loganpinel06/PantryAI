@@ -89,13 +89,6 @@ header {
     }
 }
 
-.forms-section {
-    grid-area: forms;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
-
 //pantry.html .tabledata styles
 .tabledata {
     //grid area assignment
@@ -188,6 +181,14 @@ header {
             box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
         }
     }
+}
+
+//forms section container for CSS GRID
+.forms-section {
+    grid-area: forms;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 //pantry.html .pantry_form styles
@@ -326,6 +327,51 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    //box model styles for the container
+    border: 2px solid white;
+    border-radius: 16px;
+    margin: 0; // Remove margin, let grid handle positioning
+    padding: 30px;
+    
+    //enhanced visual effects
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
+
+    //target the h2
+    h2 {
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    //target the recipe buttons
+    .recipe-button {
+        //box model styles
+        width: 100%;
+        height: 55px;
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 6px;
+        background-color: #F08080;
+        margin: 10px 0 10px 0;
+
+        //text styles
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: $background-color;
+
+        cursor: pointer;
+
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+        &:hover {
+            background: darken(#F08080, 10%);
+            color: white;
+            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+        }
+    }
 }
 
 //LOGIN AND REGISTER PAGE STYLES

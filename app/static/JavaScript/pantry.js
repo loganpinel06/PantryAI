@@ -146,8 +146,8 @@ const generateRecipes = async (event) => {
         }
         //parse the response as JSON
         const recipesData = await response.json();
-        //clear the recipes div
-        recipesDiv.innerHTML = '';
+        //clear the recipes div but keep the h2
+        recipesDiv.innerHTML = '<h2>Generated Recipes</h2>';
         
         //create new divs for each recipe and append them to the recipes div
         recipesData.forEach(recipe => {
@@ -172,6 +172,8 @@ const generateRecipes = async (event) => {
                     <button class="save-recipe">Save Recipe</button>
                 </dialog>
             `;
+            //set the recipesDiv style display to block to make it visible
+            recipesDiv.style.display = 'block';
             //add event listeners to the recipe and close buttons
             //get the HTML elements
             const recipeButton = recipeButtonDiv.querySelector('.recipe-button');
