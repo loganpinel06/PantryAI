@@ -261,9 +261,30 @@ header nav ul li {
   border-radius: 16px;
   overflow-y: auto;
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
   background-color: #252321;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   color: wheat;
+}
+.recipe-dialog::-webkit-scrollbar {
+  width: 12px;
+}
+.recipe-dialog::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.recipe-dialog::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 2px solid #252321;
+}
+.recipe-dialog::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+.recipe-dialog::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.7);
 }
 .recipe-dialog[open] {
   animation: slideInFromTop 0.3s ease-out;

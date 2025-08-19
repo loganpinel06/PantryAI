@@ -401,6 +401,35 @@ header {
     overflow-y: auto;
     scroll-behavior: smooth;
     
+    //custom scrollbar styling
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin: 10px 0; // Prevents scrollbar from overlapping rounded corners
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        border: 2px solid $background-color; // Creates spacing from edge
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        &:active {
+            background: rgba(255, 255, 255, 0.7);
+        }
+    }
+    
+    //Firefox scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+    
     //enhanced visual effects
     background-color: $background-color;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
