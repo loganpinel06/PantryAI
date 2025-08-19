@@ -149,7 +149,7 @@ header nav ul li a#logoutlink:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border: 2px solid white;
   border-radius: 16px;
   margin: 0;
