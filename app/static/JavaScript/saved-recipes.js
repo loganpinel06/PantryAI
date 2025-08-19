@@ -19,6 +19,8 @@ recipeCards.forEach(recipeCard => {
     savedRecipeButton.addEventListener('click', () => {
         //open the dialog when the saved recipe button is clicked
         recipeDialog.showModal();
+        //ensure the dialog scrolls to the top
+        recipeDialog.scrollTop = 0;
     });
     //closeDialogButton (close dialog modal)
     closeDialogButton.addEventListener('click', () => {

@@ -184,6 +184,8 @@ const generateRecipes = async (event) => {
             recipeButton.addEventListener('click', () => {
                 //open the dialog when the recipe button is clicked
                 recipeDialog.showModal();
+                //ensure the dialog scrolls to the top
+                recipeDialog.scrollTop = 0;
             });
             closeDialogButton.addEventListener('click', () => {
                 //close the dialog when the close button is clicked

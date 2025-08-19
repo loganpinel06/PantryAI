@@ -1,3 +1,13 @@
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
@@ -245,13 +255,18 @@ header nav ul li {
   width: 90%;
   max-width: 600px;
   min-height: 400px;
-  max-height: 1000px;
+  max-height: 80vh;
   padding: 30px;
   border: 2px solid white;
   border-radius: 16px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
   background-color: #252321;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   color: wheat;
+}
+.recipe-dialog[open] {
+  animation: slideInFromTop 0.3s ease-out;
 }
 .recipe-dialog::backdrop {
   background: rgba(0, 0, 0, 0.7);

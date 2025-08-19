@@ -6,6 +6,18 @@
 $background-color: #252321;
 $text-color: wheat;
 
+//keyframes for modal animations
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 //BASE STYLES FOR EVERY PAGE
 //body styles
 body {
@@ -380,10 +392,14 @@ header {
     width: 90%;
     max-width: 600px;
     min-height: 400px;
-    max-height: 1000px;
+    max-height: 80vh; // Use viewport height for better responsiveness
     padding: 30px;
     border: 2px solid white;
     border-radius: 16px;
+    
+    //scrolling behavior
+    overflow-y: auto;
+    scroll-behavior: smooth;
     
     //enhanced visual effects
     background-color: $background-color;
@@ -391,6 +407,11 @@ header {
     
     //text styles
     color: $text-color;
+    
+    //ensure modal opens at the top
+    &[open] {
+        animation: slideInFromTop 0.3s ease-out;
+    }
     
     //backdrop styles
     &::backdrop {
