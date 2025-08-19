@@ -144,6 +144,13 @@ header nav ul li a#logoutlink:hover {
   }
 }
 
+h2.container-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+
 .tabledata {
   grid-area: table;
   display: flex;
@@ -156,12 +163,6 @@ header nav ul li a#logoutlink:hover {
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   background-color: rgba(255, 255, 255, 0.03);
-}
-.tabledata h2 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 600;
-  margin-top: 0;
 }
 .tabledata table {
   width: 100%;

@@ -21,7 +21,7 @@
 <div class="pantry-layout">
     <!-- Pantry Table (Left Side) -->
     <div class="tabledata">
-        <h2>Pantry Ingredients</h2>
+        <h2 class="container-title">Pantry Ingredients</h2>
         <table>
             <thead>
                 <th>Ingredient</th>
@@ -44,6 +44,7 @@
     <div class="forms-section">
         <!-- Pantry Form -->
         <div class="pantry_form">
+            <h2 class="container-title">Add Ingredients</h2>
             <form id="pantry-form" method="POST">
                 <!-- CSRF Token for security and other hidden elements -->
                 {{ pantry_form.hidden_tag() }}
@@ -63,6 +64,7 @@
         <!-- Recipe Generation Section -->
         <!-- Generate Recipes Form -->
         <div class="generate_recipes_form">
+            <h2 class="container-title">Generate Recipes</h2>
             <form id="generate-recipes-form" method="POST">
                 <!-- CSRF Token for security and other hidden elements -->
                 {{ recipe_form.hidden_tag() }}

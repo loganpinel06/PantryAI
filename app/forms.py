@@ -28,7 +28,7 @@ class PantryForm(FlaskForm):
     #ingredient field with a data required validator
     ingredient = StringField('Ingredient: ', id='ingredient-input', validators=[DataRequired()])
     #submit button
-    submit = SubmitField('Add Ingredient', id='submit-button')
+    submit = SubmitField('Add', id='submit-button')
 
 #create a form class for generating recipes
 class GenerateRecipesForm(FlaskForm):
@@ -38,4 +38,4 @@ class GenerateRecipesForm(FlaskForm):
     meal_type = RadioField('Meal Type: ', choices=[('breakfast', 'Breakfast'), ('lunch', 'Lunch'), ('dinner', 'Dinner')], 
                             validators=[DataRequired()], default='breakfast')
     #submit button
-    submit = SubmitField('Generate Recipes', id='meal-type-submit')
+    submit = SubmitField('Generate', id='meal-type-submit')

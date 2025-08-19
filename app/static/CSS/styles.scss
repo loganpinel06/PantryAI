@@ -208,6 +208,14 @@ header {
     }
 }
 
+//target the h2 elements with the class .container-title to style all container titles
+h2.container-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 0;
+}
+
 //pantry.html .tabledata styles
 .tabledata {
     //grid area assignment
@@ -228,14 +236,6 @@ header {
     //enhanced visual effects
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     background-color: rgba(255, 255, 255, 0.03);
-
-    //target the h2 title
-    h2 {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: 600;
-        margin-top: 0;
-    }
 
     //target the table element
     table {
@@ -335,6 +335,9 @@ header {
     //enhanced visual effects
     background: rgba(255, 255, 255, 0.03);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+
+    //target the h2
+    
 
     //target the form rows
     .form-row {
