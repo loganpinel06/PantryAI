@@ -557,6 +557,121 @@ header {
     }
 }
 
+//SAVED-RECIPES PAGE STYLES
+//saved-recipes-div styles
+.saved-recipes-div {
+    //flexbox styles
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    //box model styles
+    margin: 40px 2rem;
+    padding: 30px;
+    border: 2px solid white;
+    border-radius: 16px;
+    
+    //enhanced visual effects
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.03);
+
+    //style the h2 title
+    h2 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 30px;
+        letter-spacing: 1px;
+        color: $text-color;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        padding-bottom: 15px;
+        width: 100%;
+    }
+
+    //responsive design
+    @media (max-width: 768px) {
+        margin: 20px 1rem;
+        padding: 20px;
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+//empty state message for saved recipes (if added to template later)
+.empty-recipes-message {
+    //text styles
+    font-size: 1.3rem;
+    text-align: center;
+    color: lighten($text-color, 20%);
+    font-style: italic;
+    margin: 40px 0;
+    padding: 30px;
+    
+    //visual styling
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+//recipe-card styles (container for each saved recipe)
+.recipe-card {
+    //box model styles
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    
+    //ensure proper spacing between cards
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+//saved-recipe-button styles (buttons that open recipe dialogs)
+.saved-recipe-button {
+    //box model styles
+    width: 100%;
+    min-height: 60px;
+    padding: 15px 20px;
+    border: 2px solid white;
+    border-radius: 12px;
+    background-color: #F08080;
+    
+    //text styles
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: $background-color;
+    text-align: center;
+    line-height: 1.4;
+    
+    //cursor and transitions
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    //hover effects
+    &:hover {
+        background: darken(#F08080, 10%);
+        color: white;
+        box-shadow: 0 4px 16px rgba(240, 128, 128, 0.3);
+        transform: translateY(-2px);
+    }
+    
+    //active state
+    &:active {
+        transform: translateY(0);
+    }
+    
+    //responsive design
+    @media (max-width: 768px) {
+        font-size: 1.1rem;
+        min-height: 50px;
+        padding: 12px 15px;
+    }
+}
+
 //LOGIN AND REGISTER PAGE STYLES
 //loginForm and registerForm styles
 .loginForm, .registerForm {
@@ -667,4 +782,36 @@ header {
             color: white;
         }
     }
+}
+
+//additional improvements for saved-recipes-div when it has many recipes
+.saved-recipes-div {
+    //improve scrolling behavior when there are many recipes
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    
+    //custom scrollbar styling
+    &::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        margin: 10px 0;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 10px;
+        border: 2px solid $background-color;
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    }
+    
+    //Firefox scrollbar styling
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
 }

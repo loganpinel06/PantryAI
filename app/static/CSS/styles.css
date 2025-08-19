@@ -377,6 +377,93 @@ header nav ul li {
   }
 }
 
+.saved-recipes-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 40px 2rem;
+  padding: 30px;
+  border: 2px solid white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(255, 255, 255, 0.03);
+}
+.saved-recipes-div h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+  color: wheat;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 15px;
+  width: 100%;
+}
+@media (max-width: 768px) {
+  .saved-recipes-div {
+    margin: 20px 1rem;
+    padding: 20px;
+  }
+  .saved-recipes-div h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+}
+
+.empty-recipes-message {
+  font-size: 1.3rem;
+  text-align: center;
+  color: white;
+  font-style: italic;
+  margin: 40px 0;
+  padding: 30px;
+  border: 2px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+.recipe-card {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+.recipe-card:last-child {
+  margin-bottom: 0;
+}
+
+.saved-recipe-button {
+  width: 100%;
+  min-height: 60px;
+  padding: 15px 20px;
+  border: 2px solid white;
+  border-radius: 12px;
+  background-color: #F08080;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #252321;
+  text-align: center;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.saved-recipe-button:hover {
+  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  color: white;
+  box-shadow: 0 4px 16px rgba(240, 128, 128, 0.3);
+  transform: translateY(-2px);
+}
+.saved-recipe-button:active {
+  transform: translateY(0);
+}
+@media (max-width: 768px) {
+  .saved-recipe-button {
+    font-size: 1.1rem;
+    min-height: 50px;
+    padding: 12px 15px;
+  }
+}
+
 .loginForm, .registerForm {
   display: flex;
   flex-direction: column;
@@ -460,4 +547,27 @@ header nav ul li {
 }
 .loginForm p > a:hover, .registerForm p > a:hover {
   color: white;
+}
+
+.saved-recipes-div {
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+.saved-recipes-div::-webkit-scrollbar {
+  width: 12px;
+}
+.saved-recipes-div::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+.saved-recipes-div::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  border: 2px solid #252321;
+}
+.saved-recipes-div::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }/*# sourceMappingURL=styles.css.map */
