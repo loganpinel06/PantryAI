@@ -12,7 +12,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 1rem;
   background-color: #252321;
-  color: wheat;
+  color: #E8DCC0;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -34,14 +34,14 @@ header li, header a {
   font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
-  color: wheat;
+  color: #E8DCC0;
   transition: all 0.3s ease;
 }
 header .title {
   margin-right: auto;
   font-size: 2.5rem;
   font-weight: 700;
-  color: wheat;
+  color: #E8DCC0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.5px;
   transition: all 0.3s ease;
@@ -82,13 +82,13 @@ header nav ul li a:active {
   transform: translateY(0);
 }
 header nav ul li a#logoutlink {
-  background: rgba(240, 128, 128, 0.1);
-  border-color: rgba(240, 128, 128, 0.3);
+  background: rgba(212, 121, 122, 0.1);
+  border-color: rgba(212, 121, 122, 0.3);
 }
 header nav ul li a#logoutlink:hover {
-  background: rgba(240, 128, 128, 0.2);
-  border-color: rgba(240, 128, 128, 0.5);
-  color: #F08080;
+  background: rgba(212, 121, 122, 0.2);
+  border-color: rgba(212, 121, 122, 0.5);
+  color: #D4797A;
 }
 @media (max-width: 768px) {
   header {
@@ -196,19 +196,19 @@ h2.container-title {
   width: auto;
   min-width: 5rem;
   padding: 4px 6px;
-  border: 2px solid #F08080;
+  border: 2px solid #C67B7B;
   border-radius: 6px;
-  background-color: #F08080;
+  background-color: #C67B7B;
   font-weight: 600;
   font-size: 1rem;
-  color: #252321;
+  color: white;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .tabledata .delete-button:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(188.319047619, 100.580952381, 100.580952381);
   color: white;
-  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(198, 123, 123, 0.25);
 }
 
 .forms-section {
@@ -243,19 +243,19 @@ h2.container-title {
   width: 100%;
   height: 35px;
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid #7C9885;
   border-radius: 6px;
-  background-color: #F08080;
+  background-color: #7C9885;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #252321;
+  color: white;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .pantry_form #submit-button:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(109.3384615385, 139.0615384615, 118.8923076923);
   color: white;
-  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.25);
 }
 
 .generate_recipes_form {
@@ -287,7 +287,7 @@ h2.container-title {
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: rgb(247.9651162791, 231.7848837209, 201.5348837209);
+  color: rgb(234.3, 223.5, 198.3);
 }
 .generate_recipes_form .form-row ul {
   list-style: none;
@@ -313,7 +313,7 @@ h2.container-title {
 .generate_recipes_form .form-row ul li input[type=radio] {
   margin: 0;
   transform: scale(1.2);
-  accent-color: #F08080;
+  accent-color: #7C9885;
   cursor: pointer;
 }
 .generate_recipes_form .form-row ul li label {
@@ -321,26 +321,26 @@ h2.container-title {
   cursor: pointer;
   font-size: 1.1rem;
   flex: 1;
-  color: wheat;
+  color: #E8DCC0;
   font-weight: 500;
 }
 .generate_recipes_form #meal-type-submit {
   width: 100%;
   height: 35px;
   padding: 5px 10px 5px 10px;
-  border: 2px solid white;
+  border: 2px solid #7C9885;
   border-radius: 6px;
-  background-color: #F08080;
+  background-color: #7C9885;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #252321;
+  color: white;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .generate_recipes_form #meal-type-submit:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(109.3384615385, 139.0615384615, 118.8923076923);
   color: white;
-  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.25);
 }
 
 .recipe_section {
@@ -365,20 +365,20 @@ h2.container-title {
   width: 100%;
   height: 55px;
   padding: 5px;
-  border: 2px solid white;
+  border: 2px solid #7C9885;
   border-radius: 6px;
-  background-color: #F08080;
+  background-color: #7C9885;
   margin: 10px 0 10px 0;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #252321;
+  color: white;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 .recipe_section .recipe-button:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(109.3384615385, 139.0615384615, 118.8923076923);
   color: white;
-  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.25);
 }
 
 .recipe-dialog {
@@ -395,7 +395,7 @@ h2.container-title {
   scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
   background-color: #252321;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-  color: wheat;
+  color: #E8DCC0;
 }
 .recipe-dialog::-webkit-scrollbar {
   width: 12px;
@@ -429,7 +429,7 @@ h2.container-title {
   font-weight: 600;
   text-align: center;
   margin-bottom: 20px;
-  color: wheat;
+  color: #E8DCC0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 10px;
 }
@@ -438,7 +438,7 @@ h2.container-title {
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 10px;
-  color: wheat;
+  color: #E8DCC0;
 }
 .recipe-dialog ul, .recipe-dialog ol {
   margin: 10px 0 20px 20px;
@@ -447,7 +447,7 @@ h2.container-title {
   font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 8px;
-  color: wheat;
+  color: #E8DCC0;
 }
 .recipe-dialog .close-dialog, .recipe-dialog .save-recipe, .recipe-dialog .delete-saved-recipe {
   width: auto;
@@ -459,34 +459,34 @@ h2.container-title {
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
-  color: #252321;
+  color: white;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .recipe-dialog .close-dialog {
-  background-color: #F08080;
+  background-color: #C67B7B;
 }
 .recipe-dialog .close-dialog:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(188.319047619, 100.580952381, 100.580952381);
   color: white;
-  box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+  box-shadow: 0 2px 8px rgba(198, 123, 123, 0.25);
 }
 .recipe-dialog .save-recipe {
-  background-color: #90EE90;
-  border-color: #90EE90;
+  background-color: #7C9885;
+  border-color: #7C9885;
 }
 .recipe-dialog .save-recipe:hover {
-  background: rgb(99.7734375, 231.2265625, 99.7734375);
+  background: rgb(109.3384615385, 139.0615384615, 118.8923076923);
   color: white;
-  box-shadow: 0 2px 8px rgba(144, 238, 144, 0.25);
+  box-shadow: 0 2px 8px rgba(124, 152, 133, 0.25);
 }
 .recipe-dialog .delete-saved-recipe {
-  background-color: #FF6B6B;
+  background-color: #C67B7B;
 }
 .recipe-dialog .delete-saved-recipe:hover {
-  background: #ff3838;
+  background: rgb(188.319047619, 100.580952381, 100.580952381);
   color: white;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.25);
+  box-shadow: 0 2px 8px rgba(198, 123, 123, 0.25);
 }
 @media (max-width: 768px) {
   .recipe-dialog {
@@ -525,7 +525,7 @@ h2.container-title {
   text-align: center;
   margin-bottom: 30px;
   letter-spacing: 1px;
-  color: wheat;
+  color: #E8DCC0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 15px;
   width: 100%;
@@ -544,7 +544,7 @@ h2.container-title {
 .empty-recipes-message {
   font-size: 1.3rem;
   text-align: center;
-  color: white;
+  color: rgb(236.6, 227, 204.6);
   font-style: italic;
   margin: 40px 0;
   padding: 30px;
@@ -566,21 +566,21 @@ h2.container-title {
   width: 100%;
   min-height: 60px;
   padding: 15px 20px;
-  border: 2px solid white;
+  border: 2px solid #7C9885;
   border-radius: 12px;
-  background-color: #F08080;
+  background-color: #7C9885;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #252321;
+  color: white;
   text-align: center;
   line-height: 1.4;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .saved-recipe-button:hover {
-  background: rgb(234.6126760563, 82.3873239437, 82.3873239437);
+  background: rgb(109.3384615385, 139.0615384615, 118.8923076923);
   color: white;
-  box-shadow: 0 4px 16px rgba(240, 128, 128, 0.3);
+  box-shadow: 0 4px 16px rgba(124, 152, 133, 0.3);
   transform: translateY(-2px);
 }
 .saved-recipe-button:active {
@@ -619,7 +619,7 @@ h2.container-title {
   font-weight: 800;
   margin-bottom: 5px;
   display: block;
-  color: rgb(250.9302325581, 241.5697674419, 224.0697674419);
+  color: rgb(234.3, 223.5, 198.3);
 }
 .loginForm input, .registerForm input {
   width: 100%;
@@ -629,7 +629,7 @@ h2.container-title {
   border-radius: 8px;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.1);
-  color: wheat;
+  color: #E8DCC0;
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -640,10 +640,10 @@ h2.container-title {
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 .loginForm input::-moz-placeholder, .registerForm input::-moz-placeholder {
-  color: rgba(245, 222, 179, 0.6);
+  color: rgba(232, 220, 192, 0.6);
 }
 .loginForm input::placeholder, .registerForm input::placeholder {
-  color: rgba(245, 222, 179, 0.6);
+  color: rgba(232, 220, 192, 0.6);
 }
 .loginForm input[type=submit], .registerForm input[type=submit] {
   background-color: white;
@@ -670,7 +670,7 @@ h2.container-title {
   font-size: 1rem;
 }
 .loginForm p > a, .registerForm p > a {
-  color: rgb(247.9651162791, 231.7848837209, 201.5348837209);
+  color: rgb(234.3, 223.5, 198.3);
   font-weight: 600;
   text-decoration: underline;
   transition: color 0.3s ease;

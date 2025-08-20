@@ -2,9 +2,28 @@
 //The app primarily uses flexbox for a responsive design and uses some grid for specific layouts
 //Additionally, this stylesheet aims to focus on the basics of CSS like box-model to create a simple but effective design
 
-//variables
+@use "sass:color";
+
+//variables for colors
+//background color
 $background-color: #252321;
-$text-color: wheat;
+//text colors
+$text-color: #E8DCC0;
+$text-color-light: color.scale($text-color, $lightness: 10%);
+$text-color-lighter: color.scale($text-color, $lightness: 20%);
+//button colors
+$button-color: #7C9885;
+$button-color-hover: color.scale($button-color, $lightness: -10%);
+//delete colors
+$delete-color: #C67B7B;
+$delete-color-hover: color.scale($delete-color, $lightness: -10%);
+//logout color
+$logout-color: #D4797A;
+//transparent white colors for background and effects
+$white-transparent-05: rgba(255, 255, 255, 0.05);
+$white-transparent-1: rgba(255, 255, 255, 0.1);
+$white-transparent-15: rgba(255, 255, 255, 0.15);
+$white-transparent-3: rgba(255, 255, 255, 0.3);
 
 //keyframes for modal animations
 @keyframes slideInFromTop {
@@ -45,7 +64,7 @@ header {
     border-bottom: 2px solid rgba(255, 255, 255, 0.8);
     
     //enhanced visual effects
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    background: linear-gradient(135deg, $white-transparent-05 0%, rgba(255, 255, 255, 0.02) 100%);
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 
@@ -104,8 +123,8 @@ header {
                     border-radius: 8px;
                     
                     //enhanced styling
-                    background: rgba(255, 255, 255, 0.05);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    background: $white-transparent-05;
+                    border: 1px solid $white-transparent-1;
                     backdrop-filter: blur(5px);
                     
                     //transition effects
@@ -113,8 +132,8 @@ header {
                     
                     //hover effects
                     &:hover {
-                        background: rgba(255, 255, 255, 0.15);
-                        border-color: rgba(255, 255, 255, 0.3);
+                        background: $white-transparent-15;
+                        border-color: $white-transparent-3;
                         color: white;
                         transform: translateY(-2px);
                         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
@@ -128,13 +147,13 @@ header {
                 
                 //special styling for logout link
                 a#logoutlink {
-                    background: rgba(240, 128, 128, 0.1);
-                    border-color: rgba(240, 128, 128, 0.3);
+                    background: rgba($logout-color, 0.1);
+                    border-color: rgba($logout-color, 0.3);
                     
                     &:hover {
-                        background: rgba(240, 128, 128, 0.2);
-                        border-color: rgba(240, 128, 128, 0.5);
-                        color: #F08080;
+                        background: rgba($logout-color, 0.2);
+                        border-color: rgba($logout-color, 0.5);
+                        color: $logout-color;
                     }
                 }
             }
@@ -289,23 +308,23 @@ h2.container-title {
         min-width: 5rem;
         padding: 4px 6px;
 
-        border: 2px solid #F08080;
+        border: 2px solid $delete-color;
         border-radius: 6px;
 
-        background-color: #F08080;
+        background-color: $delete-color;
         
         font-weight: 600;
         font-size: 1rem;
-        color: $background-color;
+        color: white;
 
         cursor: pointer;
 
         transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 
         &:hover {
-            background: darken(#F08080, 10%);
+            background: $delete-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+            box-shadow: 0 2px 8px rgba($delete-color, 0.25);
         }
     }
 }
@@ -360,23 +379,23 @@ h2.container-title {
         width: 100%;
         height: 35px;
         padding: 5px;
-        border: 2px solid white;
+        border: 2px solid $button-color;
         border-radius: 6px;
-        background-color: #F08080;
+        background-color: $button-color;
 
         //text styles
         font-size: 1.05rem;
         font-weight: 600;
-        color: $background-color;
+        color: white;
 
         cursor: pointer;
 
         transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 
         &:hover {
-            background: darken(#F08080, 10%);
+            background: $button-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+            box-shadow: 0 2px 8px rgba($button-color, 0.25);
         }
 
     }
@@ -426,7 +445,7 @@ h2.container-title {
             font-weight: 600;
             text-align: center;
             margin-bottom: 0.5rem;
-            color: lighten($text-color, 5%);
+            color: $text-color-light;
         }
         
         //target the radio field container (Flask-WTF generates ul for radio buttons)
@@ -450,14 +469,14 @@ h2.container-title {
                 width: 100%;
                 
                 &:hover {
-                    background: rgba(255, 255, 255, 0.05);
+                    background: $white-transparent-05;
                 }
                 
                 //style radio input
                 input[type="radio"] {
                     margin: 0;
                     transform: scale(1.2);
-                    accent-color: #F08080;
+                    accent-color: $button-color;
                     cursor: pointer;
                 }
                 
@@ -480,23 +499,23 @@ h2.container-title {
         width: 100%;
         height: 35px;
         padding: 5px 10px 5px 10px;
-        border: 2px solid white;
+        border: 2px solid $button-color;
         border-radius: 6px;
-        background-color: #F08080;
+        background-color: $button-color;
 
         //text styles
         font-size: 1.05rem;
         font-weight: 600;
-        color: $background-color;
+        color: white;
 
         cursor: pointer;
 
         transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 
         &:hover {
-            background: darken(#F08080, 10%);
+            background: $button-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+            box-shadow: 0 2px 8px rgba($button-color, 0.25);
         }
     }
 }
@@ -533,24 +552,24 @@ h2.container-title {
         width: 100%;
         height: 55px;
         padding: 5px;
-        border: 2px solid white;
+        border: 2px solid $button-color;
         border-radius: 6px;
-        background-color: #F08080;
+        background-color: $button-color;
         margin: 10px 0 10px 0;
 
         //text styles
         font-size: 1.05rem;
         font-weight: 600;
-        color: $background-color;
+        color: white;
 
         cursor: pointer;
 
         transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 
         &:hover {
-            background: darken(#F08080, 10%);
+            background: $button-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+            box-shadow: 0 2px 8px rgba($button-color, 0.25);
         }
     }
 }
@@ -576,13 +595,13 @@ h2.container-title {
     }
     
     &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
+        background: $white-transparent-1;
         border-radius: 10px;
         margin: 10px 0; // Prevents scrollbar from overlapping rounded corners
     }
     
     &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
+        background: $white-transparent-3;
         border-radius: 10px;
         border: 2px solid $background-color; // Creates spacing from edge
         
@@ -597,7 +616,7 @@ h2.container-title {
     
     //Firefox scrollbar styling
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+    scrollbar-color: $white-transparent-3 $white-transparent-1;
     
     //enhanced visual effects
     background-color: $background-color;
@@ -663,7 +682,7 @@ h2.container-title {
         //text styles
         font-size: 1rem;
         font-weight: 600;
-        color: $background-color;
+        color: white;
         
         cursor: pointer;
         transition: all 0.3s ease;
@@ -671,35 +690,35 @@ h2.container-title {
     
     //specific styles for close button
     .close-dialog {
-        background-color: #F08080;
+        background-color: $delete-color;
         
         &:hover {
-            background: darken(#F08080, 10%);
+            background: $delete-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(240, 128, 128, 0.25);
+            box-shadow: 0 2px 8px rgba($delete-color, 0.25);
         }
     }
     
     //specific styles for save button
     .save-recipe {
-        background-color: #90EE90;
-        border-color: #90EE90;
+        background-color: $button-color;
+        border-color: $button-color;
         
         &:hover {
-            background: darken(#90EE90, 10%);
+            background: $button-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(144, 238, 144, 0.25);
+            box-shadow: 0 2px 8px rgba($button-color, 0.25);
         }
     }
     
     //specific styles for delete button
     .delete-saved-recipe {
-        background-color: #FF6B6B;
+        background-color: $delete-color;
         
         &:hover {
-            background: darken(#FF6B6B, 10%);
+            background: $delete-color-hover;
             color: white;
-            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.25);
+            box-shadow: 0 2px 8px rgba($delete-color, 0.25);
         }
     }
     
@@ -775,13 +794,13 @@ h2.container-title {
     //text styles
     font-size: 1.3rem;
     text-align: center;
-    color: lighten($text-color, 20%);
+    color: $text-color-lighter;
     font-style: italic;
     margin: 40px 0;
     padding: 30px;
     
     //visual styling
-    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border: 2px dashed $white-transparent-3;
     border-radius: 12px;
     background-color: rgba(255, 255, 255, 0.01);
 }
@@ -805,14 +824,14 @@ h2.container-title {
     width: 100%;
     min-height: 60px;
     padding: 15px 20px;
-    border: 2px solid white;
+    border: 2px solid $button-color;
     border-radius: 12px;
-    background-color: #F08080;
+    background-color: $button-color;
     
     //text styles
     font-size: 1.2rem;
     font-weight: 600;
-    color: $background-color;
+    color: white;
     text-align: center;
     line-height: 1.4;
     
@@ -822,9 +841,9 @@ h2.container-title {
     
     //hover effects
     &:hover {
-        background: darken(#F08080, 10%);
+        background: $button-color-hover;
         color: white;
-        box-shadow: 0 4px 16px rgba(240, 128, 128, 0.3);
+        box-shadow: 0 4px 16px rgba($button-color, 0.3);
         transform: translateY(-2px);
     }
     
@@ -876,7 +895,7 @@ h2.container-title {
         font-weight: 800;
         margin-bottom: 5px;
         display: block;
-        color: lighten($text-color, 10%);
+        color: $text-color-light;
     }
 
     //style the input fields
@@ -891,7 +910,7 @@ h2.container-title {
         box-sizing: border-box;
         
         //enhanced styling
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: $white-transparent-1;
         color: $text-color;
         font-size: 16px;
         transition: all 0.3s ease;
@@ -899,8 +918,8 @@ h2.container-title {
         &:focus {
             outline: none;
             border-color: white;
-            background-color: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            background-color: $white-transparent-15;
+            box-shadow: 0 0 8px $white-transparent-3;
         }
 
         &::placeholder {
@@ -922,7 +941,7 @@ h2.container-title {
         transition: all 0.3s ease;
 
         &:hover {
-            background-color: darken(white, 8%);
+            background-color: color.scale(white, $lightness: -8%);
             cursor: pointer;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
@@ -942,7 +961,7 @@ h2.container-title {
 
     //select the p tags anchor element
     p > a {
-        color: lighten($text-color, 5%);
+        color: $text-color-light;
         font-weight: 600;
         text-decoration: underline;
         transition: color 0.3s ease;
@@ -965,13 +984,13 @@ h2.container-title {
     }
     
     &::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
+        background: $white-transparent-1;
         border-radius: 10px;
         margin: 10px 0;
     }
     
     &::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
+        background: $white-transparent-3;
         border-radius: 10px;
         border: 2px solid $background-color;
         
@@ -982,5 +1001,5 @@ h2.container-title {
     
     //Firefox scrollbar styling
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+    scrollbar-color: $white-transparent-3 $white-transparent-1;
 }
