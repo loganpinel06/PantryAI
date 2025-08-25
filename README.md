@@ -7,7 +7,7 @@ This web application allows users to transfer their at home pantry to a digital 
 This app was created by Logan Pinel and completed on August 24th, 2025
 
 # 💡 Features
-- ### ⚡ **Dynamic Webpage with Asynchronous JavaScript**
+- ### ⚡ **Dynamic DOM with Asynchronous JavaScript**
     - This app utilizes Asynchronous Javascript to fetch data from the backend and dynamically update the DOM to enhance the user experience and limit the amount of page refreshes commonly found in basic Flask applications.
 - ### 🔐 **Secure User Authentication**
     - Username and Password validation with Flask-WTF and Regepx to force strong inputs
