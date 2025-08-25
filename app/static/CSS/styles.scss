@@ -971,35 +971,3 @@ h2.container-title {
         }
     }
 }
-
-//additional improvements for saved-recipes-div when it has many recipes
-.saved-recipes-div {
-    //improve scrolling behavior when there are many recipes
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-    
-    //custom scrollbar styling
-    &::-webkit-scrollbar {
-        width: 12px;
-    }
-    
-    &::-webkit-scrollbar-track {
-        background: $white-transparent-1;
-        border-radius: 10px;
-        margin: 10px 0;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: $white-transparent-3;
-        border-radius: 10px;
-        border: 2px solid $background-color;
-        
-        &:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
-    }
-    
-    //Firefox scrollbar styling
-    scrollbar-width: thin;
-    scrollbar-color: $white-transparent-3 $white-transparent-1;
-}
