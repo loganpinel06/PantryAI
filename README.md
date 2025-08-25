@@ -44,3 +44,37 @@ This app was created by Logan Pinel and completed on August 24th, 2025
 - ### **Databases:**
     - PostgreSQL hosted on Supabase (stores all user, transaction, and balance data)
     - Redis hosted on Upstash (used for storing rate limiting data which is constantly being updated)
+
+# 📁 Project Structure
+```bash
+├── README.md
+├── app/
+│   ├── __init__.py
+│   ├── auth.py
+│   ├── forms.py
+│   ├── gemini.py
+│   ├── models.py
+│   ├── routes.py
+│   ├── static/
+│   │   ├── CSS/
+│   │   │   ├── styles.css
+│   │   │   ├── styles.css.map
+│   │   │   └── styles.scss
+│   │   ├── JavaScript/
+│   │   │   ├── pantry.js
+│   │   │   └── saved-recipes.js
+│   │   └── images/
+│   │       ├── PaintryAI-Logo.PNG
+│   │       └── PantryAI-Banner.png
+│   └── templates/
+│       ├── auth/
+│       │   ├── login.html
+│       │   └── register.html
+│       ├── base.html
+│       └── main/
+│           ├── pantry.html
+│           └── saved-recipes.html
+├── main.py
+└── requirements.txt
+```
+
