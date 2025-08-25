@@ -16,7 +16,7 @@ This app was created by Logan Pinel and completed on August 24th, 2025
 - ### 🛒 **Pantry Management**
     - Users can store and delete any ingredients they wish within the database
 - ### 🤖 **Google Gemini API**
-    - Integrated Google Gemini's Flash Lite 2.5 Model to generate quality recipes for the user.
+    - Integrated Google Gemini's 2.5 Flash-Lite Model to generate quality recipes for the user.
     - The Model is prompted to take a list which stores the users pantry ingredients and the selected meal type (breakfast, lunch, dinner) and create 2 unique recipes.
     - Additionally the Model outputs its data in JSON format for easy integration with JavaScript
 - ### 🗃️ **Saving Generated Recipes**
@@ -27,3 +27,20 @@ This app was created by Logan Pinel and completed on August 24th, 2025
 - ### 💬 **HTML Dialog Modals**
     - One small but impactful feature is the use of HTML Dialog elements to display any generated recipe data.
     - This addition allows the webpage to focus in on the important information of the recipe and shadow all the background data seen on the page which provides a significantly better user experience on the application.
+
+# ⚙️ Tech Stack
+- ### **Core Technologies:**
+    - Flask
+    - JavaScript
+    - HTML
+    - SCSS
+- ### **APIs**
+    - Google Gemini API (2.5 Flash-Lite Model)
+- ### **Flask Extensions:**
+    - Flask-SQLAlchemy (ORM to create database models written in python)
+    - Flask-WTF (create secure HTML form with CSRF protection)
+    - Flask-Login (handle authentication logic)
+    - Flask-Limiter (handle rate limiting to prevent brute force attacks)
+- ### **Databases:**
+    - PostgreSQL hosted on Supabase (stores all user, transaction, and balance data)
+    - Redis hosted on Upstash (used for storing rate limiting data which is constantly being updated)
