@@ -1,4 +1,4 @@
-# PantryAI
+# <img src="app/static/images/PantryAI-Banner.svg" width="100%" height="350px">
 
 # 🍽️ About the App
 Every find yourself stuck figuring out what to cook with the ingredients you have at home? PantryAI aims to help solve this problem.
