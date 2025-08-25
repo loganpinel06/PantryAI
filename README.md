@@ -8,7 +8,7 @@ This app was created by Logan Pinel and completed on August 24th, 2025
 
 # 💡 Features
 - ### ⚡ **Dynamic DOM with Asynchronous JavaScript**
-    - This app utilizes Asynchronous Javascript to fetch data from the backend and dynamically update the DOM to enhance the user experience and limit the amount of page refreshes commonly found in basic Flask applications.
+    - This app utilizes Asynchronous Javascript to fetch data from the backend and await its response before dynamically updating the DOM to enhance the user experience and limit the amount of page refreshes commonly found in basic Flask applications.
 - ### 🔐 **Secure User Authentication**
     - Username and Password validation with Flask-WTF and Regepx to force strong inputs
     - Flask-Login for secure session handling
