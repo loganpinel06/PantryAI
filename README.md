@@ -130,3 +130,7 @@ REDIS_URI=your-redis-uri
     - Now replace the group of *'s with your databases token which can be copied from the same place as the uri string
 ### Run the Application
 Navigate to main.py in the codebase and run the file!
+
+# 🧠 What I Learned
+
+# 📌 Future Development
