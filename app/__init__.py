@@ -21,6 +21,7 @@ login_manager = LoginManager()
 
 #setup the rate limiter for the app
 #use deferred initialization so we can keep app modular
+#limiter will be used in auth.py
 limiter = Limiter(key_func=get_remote_address,
                   storage_uri=os.getenv('REDIS_URI')) #connect to Upstash Redis to store rate limiting data in-memory
 

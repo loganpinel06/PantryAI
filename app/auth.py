@@ -2,15 +2,17 @@
 
 #imports
 #import flask
-from flask import Blueprint, render_template, session, redirect, url_for
+from flask import Blueprint, render_template, session, redirect, url_for, flash
 #import Flask-Login
 from flask_login import login_user, login_required, logout_user
+#import flask_limiters RateLimiterExceeded function to handle rate limiting and how it is displayed to the user
+from flask_limiter.errors import RateLimitExceeded
 #impor the RegisterForm and the LoginForm from forms.py
 from .forms import RegisterForm, LoginForm
 #import the user model from models.py
 from .models import User
-#import the db object and login manager from __init__.py
-from . import db, login_manager
+#import the db object, login manager, and limiter from __init__.py
+from . import db, login_manager, limiter
 
 #create a blueprint for the auth routes
 view_auth = Blueprint('auth', __name__)
@@ -62,6 +64,8 @@ def register():
 
 #create the login route
 @view_auth.route('/', methods=['GET', 'POST'])
+#add the limiter decorator the rate limit requests to this route
+@limiter.limit("3 per 5 minutes", methods=["POST"]) #limit to 3 requests per 5 minutes for POST requests
 def login():
     #create the login form
     form = LoginForm()
@@ -97,5 +101,14 @@ def login():
 def logout():
     #log out the user
     logout_user()
+    #redirect to the login page
+    return redirect(url_for('auth.login'))
+
+#add a error handler for 429 errors (Rate Limiter on login route)
+#this will be used to flash a message to the user when they hit the rate limit instead of rendering a basic html page
+@view_auth.errorhandler(RateLimitExceeded)
+def ratelimit_exceeded(e):
+    #flash a message to the user
+    flash('Too many login attempts. Please try again in 5 minutes', 'error')
     #redirect to the login page
     return redirect(url_for('auth.login'))
