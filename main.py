@@ -10,4 +10,4 @@ app = create_app()
 
 #run the app using a main guard
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)  #set debug=True for development mode and port to 5000
+    app.run()
