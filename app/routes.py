@@ -186,8 +186,6 @@ def save_recipe():
             db.session.add(new_saved_recipe)
             #commit the SavedRecipes object to the db
             db.session.commit()
-            #flash a success message
-            flash('Recipe saved successfully!')
             #return a json response with the saved recipe data
             return jsonify({
                 'message': 'Recipe saved successfully',

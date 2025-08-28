@@ -228,6 +228,15 @@ const saveRecipe = async (recipe) => {
         }
         //parse the response as JSON (best practice even if we don't use it)
         const savedRecipe = await response.json();
+        //display an alert to the user that the recipe was saved successfully (similar to Flask flash message)
+        const dialog = document.querySelector('dialog');
+        const alertDiv = document.createElement('div');
+        alertDiv.className = 'flashedMessage';
+        alertDiv.innerHTML = `
+            <p>${savedRecipe.message}</p>
+            <button onclick="this.parentElement.style.display='none';">&times;</button>
+        `;
+        dialog.appendChild(alertDiv);
     //catch any errors
     } catch (error) {
         //log the error to the console
