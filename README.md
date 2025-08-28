@@ -83,7 +83,7 @@ PantryAI is deployed via Render with the following production configurations:
 - HTTPS enabled automatically with Render
 - Gunicorn as the production WSGI server
 - Logging to stdout for monitoring errors via Render Logs
-Explore PantryAI here:
+Explore PantryAI here: https://pantryai-fbo8.onrender.com
 
 # 💾 Run the Project Locally
 ### Clone the Repository
