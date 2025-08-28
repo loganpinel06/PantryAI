@@ -9,6 +9,8 @@ from flask_limiter.util import get_remote_address
 from google import genai
 import os
 from dotenv import load_dotenv
+#import datetime for session lifetime management
+from datetime import timedelta
 
 #load environment variables
 load_dotenv()
@@ -34,6 +36,15 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('SUPABASE_CONNECTION_STRING')  #PostegreSQL database hosted on Supabase
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False #disable modification tracking for performance inhancement
 
+    #add session and cookie security
+    app.config['SESSION_COOKIE_SECURE'] = True #Ensure cookies are only sent over HTTPS
+    app.config['SESSION_COOKIE_HTTPONLY'] = True #Prevent XSS attacks by making cookies inaccessible to JavaScript
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax' #Help prevent CSRF attacks
+
+    #configure a Session Lifetime
+    #sessions will expire after 30 minutes of inactivity
+    app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+
     #configure the app's secret key for session management
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
@@ -58,7 +69,15 @@ def create_app():
 
     #create the database using a context manager
     with app.app_context():
-        db.create_all()
+        #check if we are in production or development
+        #if development, we wil create the database, otherwise there is no need since it already exists in production
+        #THIS WAS ADDED TO SAVE TIME FOR RENDER BOOTUPS
+        if os.getenv('FLASK_ENV') == 'development':
+            #create the database
+            db.create_all()
+        #else we can just pass
+        else:
+            pass
 
     #initialize the Gemini client
     #get the api key from the .env file
