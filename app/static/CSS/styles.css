@@ -128,6 +128,37 @@ header nav ul li a#logoutlink:hover {
   }
 }
 
+.flashedMessage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 15px 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgb(58.5657142857, 55.4, 52.2342857143), rgb(50.4785714286, 47.75, 45.0214285714));
+  animation: slideIn 0.5s ease-out;
+}
+.flashedMessage button {
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #C67B7B;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.flashedMessage button:hover {
+  background-color: rgb(188.319047619, 100.580952381, 100.580952381);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .pantry-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
