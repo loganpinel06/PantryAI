@@ -86,6 +86,8 @@ def login():
             try:
                 #log in the user using Flask-Login
                 login_user(user)
+                #set the session as permanent to enable the session lifetime management
+                session.permanent = True
                 #redirect to the pantry page after successful login
                 return redirect(url_for('view.pantry'))
             #ERROR
