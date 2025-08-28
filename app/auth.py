@@ -51,12 +51,16 @@ def register():
                 db.session.add(new_user)
                 #commit the user to the db
                 db.session.commit()
+                #flash a success message to the user
+                flash("Registration successful! You can now log in")
                 #redirect to the login page after successful registration
                 return redirect(url_for('auth.login'))
             #ERROR
             except Exception as e:
                 #rollback the user from the db session in case of an error
                 db.session.rollback()
+                #flash a message to the user
+                flash("There was an error registering your account, please try again")
                 #redirect back to the register page with an error message
                 return redirect(url_for('auth.register', error='Error registering user: {}'.format(e)))
     #else we want to render the register template with the form
@@ -86,10 +90,14 @@ def login():
                 return redirect(url_for('view.pantry'))
             #ERROR
             except Exception as e:
+                #flash a message to the user
+                flash("There was an error logging you in, please try again")
                 #redirect back to the login page with an error message
                 return redirect(url_for('auth.login', error='Error logging in: {}'.format(e)))
         #incorrect username or password
         else:
+            #if login fails, redirect back to login page with an error message and flash a message saying login failed
+            flash('Invalid username or password', 'error')
             #if login fails, redirect back to the login page with an error message
             return redirect(url_for('auth.login', error='Invalid username or password'))
     #else we want to render the login template with the form
@@ -101,6 +109,8 @@ def login():
 def logout():
     #log out the user
     logout_user()
+    #flash a message to the user
+    flash('You have been logged out!')
     #redirect to the login page
     return redirect(url_for('auth.login'))
 
