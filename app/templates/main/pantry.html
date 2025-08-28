@@ -6,6 +6,20 @@
 
 {% block content %}
 
+<!-- Jinja2 logic for flashing messages with flash -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <!-- Div for the flashed message so we can style and add a button to close the flash -->
+        <div class="flashedMessage">
+            {{message}}
+            <!-- Button with the HTML Entity for an X symbol -->
+            <button onclick="this.parentElement.style.display='none';">&times;</button> <!-- Use JavaScript to hide the flashed message (AI helped here as I dont know js yet) -->
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
 <header>
     <h1 class="title">PantryAI</h1>
     <nav>
