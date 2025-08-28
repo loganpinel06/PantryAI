@@ -4,6 +4,8 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from google import genai
 import os
 from dotenv import load_dotenv
@@ -16,6 +18,11 @@ db = SQLAlchemy()
 
 #initialize the login manager for user authentication
 login_manager = LoginManager()
+
+#setup the rate limiter for the app
+#use deferred initialization so we can keep app modular
+limiter = Limiter(key_func=get_remote_address,
+                  storage_uri=os.getenv('REDIS_URI')) #connect to Upstash Redis to store rate limiting data in-memory
 
 #create the Flask application instance
 def create_app():
@@ -36,6 +43,9 @@ def create_app():
     login_manager.init_app(app)
     #set the login view for the login manager
     login_manager.login_view = 'auth.login'
+
+    #initialize the rate limiter
+    limiter.init_app(app)
 
     #register the routes blueprint from routes.py
     from .routes import view
