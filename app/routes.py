@@ -1,7 +1,7 @@
 #
 
 #imports
-from flask import Blueprint, render_template, redirect, url_for, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, flash
 #import the Flask-Login for user authentication
 from flask_login import login_required, current_user
 #import the Pantry and SavedRecipes models
@@ -78,6 +78,8 @@ def add_ingredient():
         except Exception as e:
             #rollback the Pantry object from the db session in case of an error
             db.session.rollback()
+            #flash an error message
+            flash('There was an issue adding your pantry item, please try again')
             #return the error message
             return jsonify({
                 'error': 'Error adding pantry item: {}'.format(e)
@@ -108,6 +110,8 @@ def delete_ingredient(id:int):
         }), 200 # HTTP status code 200 for success
     #ERROR
     except Exception as e:
+        #flash an error message
+        flash('There was an issue deleting your pantry item, please try again')
         #return the error message
         return jsonify({
             'error': 'Error deleting pantry item: {}'.format(e)
@@ -137,6 +141,8 @@ def generate_recipes():
             return jsonify(recipes_data)
         #ERROR
         except Exception as e:
+            #flash an error message
+            flash('There was an issue generating recipes, please try again')
             #return the error message
             return jsonify({
                 'error': 'Error generating recipes: {}'.format(e)
@@ -180,6 +186,8 @@ def save_recipe():
             db.session.add(new_saved_recipe)
             #commit the SavedRecipes object to the db
             db.session.commit()
+            #flash a success message
+            flash('Recipe saved successfully!')
             #return a json response with the saved recipe data
             return jsonify({
                 'message': 'Recipe saved successfully',
@@ -188,6 +196,8 @@ def save_recipe():
         except Exception as e:
             #rollback the SavedRecipes object from the db session in case of an error
             db.session.rollback()
+            #flash an error message
+            flash('There was an issue saving your recipe, please try again')
             #return the error message
             return jsonify({
                 'error': 'Error saving recipe: {}'.format(e)
@@ -216,6 +226,8 @@ def delete_recipe(id:int):
     except Exception as e:
         #rollback the db session in case of an error
         db.session.rollback()
+        #flash an error message
+        flash('There was an issue deleting your saved recipe, please try again')
         #return the error message
         return jsonify({
             'error': 'Error deleting saved recipe: {}'.format(e)
