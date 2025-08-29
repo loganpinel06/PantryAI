@@ -2,6 +2,15 @@
 
 {% block content %}
 
+<!-- HEADER for 'login.html'-->
+<header>
+    <!-- create a div to store the apps logo and title for page -->
+    <div class="banner">
+        <img src="{{ url_for('static', filename='images/PantryAI-Logo.PNG') }}" alt="PantryAI Logo" id="appLogo">
+        <h1 class="welcome-title">PantryAI</h1>
+    </div>
+</header>
+
 <!-- Jinja2 logic for flashing messages with Flask's flash function -->
 {% with messages = get_flashed_messages() %}
     {% if messages %}

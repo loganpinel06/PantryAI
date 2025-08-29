@@ -2,6 +2,15 @@
 
 {% block content %}
 
+<!-- HEADER for 'login.html'-->
+<header>
+    <!-- create a div to store the apps logo and title for page -->
+    <div class="banner">
+        <img src="{{ url_for('static', filename='images/PantryAI-Logo.PNG') }}" alt="PantryAI Logo" id="appLogo">
+        <h1 class="welcome-title">PantryAI</h1>
+    </div>
+</header>
+
 <!-- div for register form -->
 <div class="registerForm">
     <!-- Main h1 for the login page -->

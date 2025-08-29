@@ -59,6 +59,11 @@ header {
     align-items: center;
     justify-content: flex-end;
     padding: 15px 30px;
+    
+    //override justify-content when banner is present
+    &:has(.banner) {
+        justify-content: center;
+    }
 
     //box model styles
     border-bottom: 2px solid rgba(255, 255, 255, 0.8);
@@ -75,6 +80,21 @@ header {
         text-decoration: none;
         color: $text-color;
         transition: all 0.3s ease;
+    }
+
+    //target the image
+    img {
+        //box model styles
+        width: 100px;
+        height: 100px;
+        margin-right: 20px; //space between the image and the text
+        
+        //smooth hover effect
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     //target the title class
@@ -201,6 +221,26 @@ header {
                 }
             }
         }
+    }
+}
+
+//target the banner class in the header separately
+//for login and register pages
+header>.banner {
+    //flexbox styles to center and align content
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; // Take full width of header
+    margin: 0; // Reset all margins
+    
+    //target the .welcome-title class
+    .welcome-title {
+        //font styles
+        font-size: 4.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin: 0; // Remove default margin for better alignment
     }
 }
 

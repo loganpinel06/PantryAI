@@ -30,12 +30,24 @@ header {
           backdrop-filter: blur(10px);
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
 }
+header:has(.banner) {
+  justify-content: center;
+}
 header li, header a {
   font-size: 1.2rem;
   font-weight: 600;
   text-decoration: none;
   color: #E8DCC0;
   transition: all 0.3s ease;
+}
+header img {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  transition: transform 0.3s ease;
+}
+header img:hover {
+  transform: scale(1.05);
 }
 header .title {
   margin-right: auto;
@@ -126,6 +138,20 @@ header nav ul li a#logoutlink:hover {
     width: 100%;
     box-sizing: border-box;
   }
+}
+
+header > .banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+}
+header > .banner .welcome-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
 }
 
 .flashedMessage {
