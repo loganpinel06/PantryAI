@@ -132,5 +132,11 @@ REDIS_URI=your-redis-uri
 Navigate to main.py in the codebase and run the file!
 
 # 🧠 What I Learned
+This application marks the completion of my second full-stack web application with Flask. During my development I strengthened the skills I learned from developing Checkr-S which include: routing, HTTP methods, utilizing Flask extensions (Flask-SQLAlchemy, Flask-Login, Flask-WTF, Flask-Limiter), CSRF protection, rate limiting, building a secure authentication system, and integrating databases such as PostgreSQL (Supabase) and Redis (Upstash) all while mainting a modular code base. Additionally I expanded my knowledge and learned new skills which include:
+- Learning JavaScript to facilitate a dynamic frontend, utilizing asynchronous programming (fetch/await) and DOM manipulation.
+- Designing REST API routes on the backend that return JSON data which is handled with JavaScript instead of always returning a rendered HTML template.
+- Integrating an external API and practice using Artificial Inteligence with the Google Gemini API.
+- Creating a cleaner frontend experience by making use of HTML dialog modals.
+Overall this is a project I am very proud as I was able to strengthen and refine my skill all while learning new high level topics and a whole new language which will help me throughout my career as a software engineer and full-stack developer.
 
 # 📌 Future Development
