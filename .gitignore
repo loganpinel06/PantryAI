@@ -9,6 +9,7 @@ env/
 .env
 logs/
 instance/
+prightconfig.json
 
 #good practice to ignore .DS_Store (created by mac)
 .DS_Store
